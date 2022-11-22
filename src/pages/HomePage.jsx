@@ -1,5 +1,10 @@
+/* eslint-disable no-else-return */
 import React from 'react';
 
 export default function HomePage() {
-  return <div>HomePage</div>;
+  return (
+    <div>
+      <p>Welcome to your Dashboard</p>
+    </div>
+  );
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 import Background from '../components/Background';
 import Illustration from '../assets/img/Illustration.png';
 
@@ -79,13 +79,14 @@ export default function LandingPage() {
               <br />
               menyelesaikan permasalahan belajarmu
             </p>
-
-            <button
-              type="button"
-              className="bg-primary-1 text-white font-medium text-[18px] px-10 py-3 rounded-md mt-12 shadow-2xl shadow-primary-1"
-            >
-              Mulai Diskusi
-            </button>
+            <div className="mt-12">
+              <Link
+                to="/login"
+                className="bg-primary-1 text-white font-medium text-[18px] px-10 py-3 rounded-md shadow-2xl shadow-primary-1"
+              >
+                Mulai Diskusi
+              </Link>
+            </div>
           </div>
           <img src={Illustration} alt="" className="w-96 md:w-auto" />
         </div>

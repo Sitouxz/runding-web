@@ -1,23 +1,43 @@
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import api from '../config/api';
 
 import Background from '../components/Background';
 
 export default function LoginPage() {
   const [passwordShown, setPasswordShown] = useState(false);
+  const [responseData, setResponseData] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
 
   const togglePasswordVisiblity = () => {
     setPasswordShown(!passwordShown);
   };
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
   const LoginHandler = async (e) => {
     e.preventDefault();
-    // await signIn(email, password);
-    console.log(email, password);
+    await api
+      .post('/user/login', {
+        username,
+        password,
+      })
+      .then((response) => {
+        setResponseData(response.data);
+        console.log(response.data);
+        if (response.data.status === 'ok') {
+          localStorage.setItem('authenticated', true);
+          localStorage.setItem('token', response.data.data);
+          navigate('/home');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -36,12 +56,13 @@ export default function LoginPage() {
           >
             <div className="flex flex-col mb-3">
               <input
-                type="email"
-                placeholder="Email"
-                name="email"
-                id="email"
+                type="text"
+                placeholder="username"
+                name="username"
+                id="username"
                 className=" border-b py-4 px-1 border-[#7a7a7a] focus:outline-none focus:border-primary-1"
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setUsername(e.target.value)}
+                required
               />
             </div>
             <div className="relative w-full">
@@ -51,6 +72,7 @@ export default function LoginPage() {
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 type={passwordShown ? 'text' : 'password'}
+                required
               />
               <div className="absolute inset-y-0 right-0 flex items-center px-2">
                 <button
@@ -67,6 +89,9 @@ export default function LoginPage() {
                 </button>
               </div>
             </div>
+            {responseData.status === 'error' && (
+              <p className="text-red-500 text-sm mt-3">{responseData.error}</p>
+            )}
             <div className="flex justify-between items-center mt-4">
               <div className="flex items-center">
                 <label className="container">

@@ -1,12 +1,21 @@
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import Background from '../components/Background';
+
+import api from '../config/api';
 
 export default function LoginPage() {
   const [passwordShown, setPasswordShown] = useState(false);
   const [confirmPasswordShown, setConfirmPasswordShown] = useState(false);
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [responseData, setResponseData] = useState('');
+
+  const navigate = useNavigate();
 
   const togglePasswordVisiblity = () => {
     setPasswordShown(!passwordShown);
@@ -16,15 +25,25 @@ export default function LoginPage() {
     setConfirmPasswordShown(!confirmPasswordShown);
   };
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
-  const LoginHandler = async (e) => {
+  const RegisterHandler = async (e) => {
     e.preventDefault();
-    // await signIn(email, password);
-    console.log(name, email, password, confirmPassword);
+    await api
+      .post('user/register', {
+        username,
+        email,
+        password,
+        confirmPassword,
+      })
+      .then((response) => {
+        setResponseData(response.data);
+        console.log(response.data);
+        if (response.data.status === 'ok') {
+          navigate('/login');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -37,16 +56,16 @@ export default function LoginPage() {
           <form
             action="#"
             className="login-input mt-[75px]"
-            onSubmit={LoginHandler}
+            onSubmit={RegisterHandler}
           >
             <div className="flex flex-col mb-3">
               <input
-                type="Name"
-                placeholder="Name"
-                name="Name"
-                id="Name"
+                type="username"
+                placeholder="Username"
+                name="username"
+                id="username"
                 className=" border-b py-4 px-1 border-[#7a7a7a] focus:outline-none focus:border-primary-1"
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             <div className="flex flex-col mb-3">
@@ -105,15 +124,9 @@ export default function LoginPage() {
                 </button>
               </div>
             </div>
-            <div className="flex justify-between items-center mt-4">
-              <div className="flex items-center">
-                <label className="container">
-                  Remember me
-                  <input type="checkbox" />
-                  <span className="checkmark" />
-                </label>
-              </div>
-            </div>
+            {responseData && (
+              <p className="text-red-500 text-sm">{responseData.error}</p>
+            )}
             <button
               type="submit"
               className="flex justify-end items-center text-white w-[80px] h-[80px] mt-[40px] bg-primary-2 text-[20px] font-medium p-0 rounded-[20px] relative hover:w-full transition-all ease-in-out duration-300 shadow-primary-1 shadow-2xl"
