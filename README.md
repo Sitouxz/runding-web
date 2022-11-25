@@ -1,3 +1,9 @@
 # Runding - Ruang Diskusi dan Bimbingan
 
-Project for Dicoding final capstone project
+Front-End Project for Dicoding final capstone project
+
+Backend web RUNDING berbasis HTTP dan dibangun menggunakan framework Express.js. Source code backend ada pada link berikut [Runding Back-End](https://github.com/tristanbeykusuma/capstone-runding-back-end)
+
+## Instructions Install
+
+Dicoding Indonesia
