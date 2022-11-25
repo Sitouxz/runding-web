@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import PrivateRoute from './routes/PrivateRoutes';
+// import PrivateRoute from './routes/PrivateRoutes';
 
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
@@ -18,9 +18,9 @@ function App() {
         <Route
           path="/home"
           element={
-            <PrivateRoute>
-              <HomePage />
-            </PrivateRoute>
+            // <PrivateRoute>
+            <HomePage />
+            // </PrivateRoute>
           }
         />
       </Routes>

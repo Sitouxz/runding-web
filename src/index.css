@@ -14,7 +14,7 @@
   font-size: regular;
 }
 
-.container {
+.check-container {
   display: block;
   position: relative;
   padding-left: 25px;
@@ -26,7 +26,7 @@
   user-select: none;
 }
 
-.container input {
+.check-container input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -44,11 +44,11 @@
   border-radius: 4px;
 }
 
-.container:hover input ~ .checkmark {
+.check-container:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
-.container input:checked ~ .checkmark {
+.check-container input:checked ~ .checkmark {
   background-color: #5d5fef;
   border: none;
 }
@@ -59,11 +59,11 @@
   display: none;
 }
 
-.container input:checked ~ .checkmark:after {
+.check-container input:checked ~ .checkmark:after {
   display: block;
 }
 
-.container .checkmark:after {
+.check-container .checkmark:after {
   left: 6px;
   top: 3px;
   width: 5px;

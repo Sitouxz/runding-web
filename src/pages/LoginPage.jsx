@@ -94,7 +94,7 @@ export default function LoginPage() {
             )}
             <div className="flex justify-between items-center mt-4">
               <div className="flex items-center">
-                <label className="container">
+                <label className="check-container">
                   Remember me
                   <input type="checkbox" />
                   <span className="checkmark" />
