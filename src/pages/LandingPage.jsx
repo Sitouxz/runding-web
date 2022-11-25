@@ -52,7 +52,7 @@ export default function LandingPage() {
                 <li className="nav-item">
                   <a
                     className="px-3 py-2 text-md font-medium leading-snug text-primary-3 lg:text-white hover:opacity-75"
-                    href="#beranda"
+                    href="/about"
                   >
                     Tentang Kami
                   </a>

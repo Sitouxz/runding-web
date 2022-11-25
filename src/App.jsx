@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import RuangPage from './pages/RuangPage';
+import AboutPage from './pages/AboutPage';
 
 function App() {
   return (
@@ -29,6 +30,14 @@ function App() {
           element={
             <PrivateRoute>
               <RuangPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <PrivateRoute>
+              <AboutPage />
             </PrivateRoute>
           }
         />

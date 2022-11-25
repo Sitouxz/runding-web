@@ -1,40 +1,11 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-else-return */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Popup from 'reactjs-popup';
-
-import api from '../config/api';
-
 import Background from '../components/Background';
 
-export default function RuangPage() {
-  // const [ruangData, setRuangData] = useState([]);
-
-  const DisplayHandler = async () => {
-    const token = await localStorage.getItem('token');
-    await api
-      .get('/runding', {
-        headers: {
-          'auth-token': token, // the token is a variable which holds the token
-        },
-      })
-      .then((response) => {
-        console.log(response.data);
-        // setRuangData(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  useEffect(() => {
-    DisplayHandler();
-  }, []);
-
+export default function AboutPage() {
   const navigate = useNavigate();
 
   return (
@@ -91,7 +62,13 @@ export default function RuangPage() {
             </div>
           )}
         </Popup>
-        <p>Kelas/Ruang Diskusi:</p>
+        <p>Anggota project kami :</p>
+        <ul>
+          <li>- Owen</li>
+          <li>- Tristan</li>
+          <li>- Tria</li>
+          <li>- Lara</li>
+        </ul>
         <a href="/">Kembali ke Halaman Utama</a>
       </div>
     </>

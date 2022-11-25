@@ -119,6 +119,7 @@ export default function LoginPage() {
                 Daftar sekarang
               </a>
             </p>
+            <p className="text-center"><a className="text-primary-2" href="/">Kembali ke Halaman Utama</a></p>
           </div>
         </div>
       </div>
