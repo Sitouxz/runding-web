@@ -48,7 +48,7 @@ export default function Navbar() {
               </li>
               <li className="flex">
                 <a
-                  className="px-3 py-2 text-md font-medium leading-snug text-primary-3 lg:text-white hover:opacity-75"
+                  className="w-full py-3 lg:mr-3 px-1 text-lg font-medium leading-snug text-primary-3 hover:bg-slate-200"
                   href="/about"
                 >
                   Tentang Kami
