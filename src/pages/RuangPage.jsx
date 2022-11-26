@@ -1,14 +1,40 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-else-return */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Popup from 'reactjs-popup';
-import Background from '../components/Background';
-import DiscussionRoomCard from '../components/DiscussionRoomCard';
 
 import api from '../config/api';
 
-export default function HomePage() {
+import Background from '../components/Background';
+
+export default function RuangPage() {
+  // const [ruangData, setRuangData] = useState([]);
+
+  const DisplayHandler = async () => {
+    const token = await localStorage.getItem('token');
+    await api
+      .get('/runding', {
+        headers: {
+          'auth-token': token, // the token is a variable which holds the token
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        // setRuangData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    DisplayHandler();
+  }, []);
+
   const navigate = useNavigate();
 
   return (
@@ -16,12 +42,7 @@ export default function HomePage() {
       <Background />
       <div>
         <Popup
-          trigger={
-            <button type="button" className="button skip-link">
-              {' '}
-              Open Accessible Navigation Menu{' '}
-            </button>
-          }
+          trigger={<button type="button" className="button skip-link"> Open Accessible Navigation Menu </button>}
           modal
           nested
         >
@@ -70,7 +91,7 @@ export default function HomePage() {
             </div>
           )}
         </Popup>
-        <p>Welcome to your Dashboard</p>
+        <p>Kelas/Ruang Diskusi:</p>
         <a href="/">Kembali ke Halaman Utama</a>
       </div>
     </>
