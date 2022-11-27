@@ -19,7 +19,7 @@ export default function AccessibilityPopup() {
       nested
     >
       {(close) => (
-        <div className="border p-2 rounded-xl shadow-md">
+        <div className="border p-2 rounded-xl shadow-md bg-white">
           <div className="border-b border-primary-1 text-center text-lg font-medium py-2">
             <span>Navigation Menu</span>
           </div>

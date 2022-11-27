@@ -63,7 +63,7 @@ export default function LandingPage() {
         </div>
       </nav>
       <Background />
-      <div className="container mx-auto">
+      <div className="container mx-auto mb-10">
         <div className="flex flex-col-reverse lg:flex-row text-center lg:text-start items-center justify-center lg:justify-between">
           <div>
             <span className="font-medium text-primary-1 text-[18px]">
