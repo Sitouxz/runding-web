@@ -7,7 +7,7 @@ import ellipse3 from '../assets/img/Ellipse-2.svg';
 export default function Background(props) {
   const { noBig } = props;
   return (
-    <>
+    <div>
       {!noBig && (
         <img
           src={ellipse}
@@ -17,6 +17,6 @@ export default function Background(props) {
       )}
       <img src={ellipse2} alt="" className="absolute top-96 left-0 -z-10" />
       <img src={ellipse3} alt="" className="absolute bottom-10 right-0 -z-10" />
-    </>
+    </div>
   );
 }

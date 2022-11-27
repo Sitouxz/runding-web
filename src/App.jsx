@@ -9,6 +9,8 @@ import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import RuangPage from './pages/RuangPage';
 import AboutPage from './pages/AboutPage';
+import DiscussionDetails from './pages/DiscussionDetails';
+import QuestionPage from './pages/QuestionPage';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/ruang" element={<RuangPage />} />
+        <Route path="/detail" element={<DiscussionDetails />} />
+        <Route path="/quest" element={<QuestionPage />} />
         <Route
           path="/home"
           element={
