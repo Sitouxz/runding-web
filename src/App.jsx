@@ -11,6 +11,7 @@ import RuangPage from './pages/RuangPage';
 import AboutPage from './pages/AboutPage';
 import DiscussionDetails from './pages/DiscussionDetails';
 import QuestionPage from './pages/QuestionPage';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/ruang" element={<RuangPage />} />
         <Route path="/detail" element={<DiscussionDetails />} />
         <Route path="/quest" element={<QuestionPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route
           path="/home"
           element={
