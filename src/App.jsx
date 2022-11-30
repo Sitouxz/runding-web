@@ -11,7 +11,10 @@ import RuangPage from './pages/RuangPage';
 import AboutPage from './pages/AboutPage';
 import DiscussionDetails from './pages/DiscussionDetails';
 import QuestionPage from './pages/QuestionPage';
+import QuestionDetailPage from './pages/QuestionDetailPage';
 import ProfilePage from './pages/ProfilePage';
+import CreateGroupPage from './pages/CreateGroupPage';
+import ManageGroupPage from './pages/ManageGroupPage';
 
 function App() {
   return (
@@ -23,7 +26,10 @@ function App() {
         <Route path="/ruang" element={<RuangPage />} />
         <Route path="/detail" element={<DiscussionDetails />} />
         <Route path="/quest" element={<QuestionPage />} />
+        <Route path="/quest/id" element={<QuestionDetailPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/create" element={<CreateGroupPage />} />
+        <Route path="/manage" element={<ManageGroupPage />} />
         <Route
           path="/home"
           element={

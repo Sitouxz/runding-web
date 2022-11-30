@@ -1,3 +1,10 @@
+/* eslint-disable function-paren-newline */
+/* eslint-disable comma-dangle */
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable consistent-return */
+/* eslint-disable indent */
+/* eslint-disable react/jsx-indent */
+/* eslint-disable array-callback-return */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-else-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -13,6 +20,8 @@ import api from '../config/api';
 
 export default function HomePage() {
   const [discussionRooms, setDiscussionRooms] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -24,12 +33,30 @@ export default function HomePage() {
       })
       .then((response) => {
         setDiscussionRooms(response.data.data);
+        setSearchResults(response.data.data);
       })
       .catch((error) => {
         // eslint-disable-next-line no-console
         console.log(error);
       });
   }, []);
+
+  // search function for discussion rooms
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setSearchResults(discussionRooms);
+    const newResults = discussionRooms.filter((discussion) =>
+      discussion.subject.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(newResults);
+
+    setSearchTerm('');
+  };
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   return (
     <>
@@ -38,11 +65,15 @@ export default function HomePage() {
       <Background noBig />
       <div className="container mx-auto px-2 mt-4">
         <div className="flex flex-col lg:flex-row mb-4">
-          <input
-            type="text"
-            placeholder="Cari ruang diskusi"
-            className="border-2 border-primary-1 rounded-lg flex-grow py-1 px-2"
-          />
+          <form onSubmit={handleSubmit} className="flex-grow">
+            <input
+              type="text"
+              placeholder="Cari ruang diskusi"
+              className="border-2 border-primary-1 rounded-lg flex-grow py-1 px-2 w-full"
+              value={searchTerm}
+              onChange={handleChange}
+            />
+          </form>
           <Popup
             trigger={
               <button
@@ -150,14 +181,20 @@ export default function HomePage() {
           <span className="text-primary-1"> Ruang Diskusi</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          {discussionRooms.map((discussionRoom) => (
+          {searchResults.map((discussionRoom) => (
+            <DiscussionRoomCard
+              key={discussionRoom._id}
+              discussionRoom={discussionRoom}
+            />
+          ))}
+          {/* {discussionRooms.map((discussionRoom) => (
             <DiscussionRoomCard
               key={discussionRoom._id}
               logo={discussionRoom.logo_grup}
               subject={discussionRoom.subject}
               user={discussionRoom.peserta}
             />
-          ))}
+          ))} */}
         </div>
       </div>
     </>
