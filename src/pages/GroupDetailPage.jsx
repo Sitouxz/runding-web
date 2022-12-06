@@ -41,6 +41,9 @@ export default function HomePage() {
         // eslint-disable-next-line no-console
         console.log(error);
       });
+    document.body.style.setProperty('--color-primary', '#5D5FEF');
+    document.body.style.setProperty('--color-secondary', '#636499');
+    document.body.style.setProperty('--color-tertiary', '#121225');
   }, []);
 
   return (

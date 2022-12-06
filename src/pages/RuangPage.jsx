@@ -17,6 +17,7 @@ import AccessibilityPopup from '../components/AccessibilityPopup';
 import Navbar from '../layouts/Navbar';
 import Background from '../components/Background';
 import DiscussionRoomCard from '../components/DiscussionRoomCard';
+import RandomFacts from '../components/RandomFacts';
 
 import api from '../config/api';
 
@@ -43,6 +44,9 @@ export default function HomePage() {
         // eslint-disable-next-line no-console
         console.log(error);
       });
+    document.body.style.setProperty('--color-primary', '#5D5FEF');
+    document.body.style.setProperty('--color-secondary', '#636499');
+    document.body.style.setProperty('--color-tertiary', '#121225');
   }, []);
 
   // search function for discussion rooms
@@ -199,6 +203,7 @@ export default function HomePage() {
               user={discussionRoom.peserta}
             />
           ))} */}
+          <RandomFacts />
         </div>
       </div>
     </>

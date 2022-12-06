@@ -46,6 +46,24 @@ export default function AccessibilityPopup() {
             </button>
             <button
               type="button"
+              className="py-2 px-3 rounded-lg bg-primary-2 text-white"
+              onClick={() => {
+                const colorAccess = document.body.style.getPropertyValue('--color-primary');
+                if (colorAccess !== '#cc79a7') {
+                  document.body.style.setProperty('--color-primary', '#cc79a7');
+                  document.body.style.setProperty('--color-secondary', '#0072b2');
+                  document.body.style.setProperty('--color-tertiary', '#000000');
+                } else {
+                  document.body.style.setProperty('--color-primary', '#5D5FEF');
+                  document.body.style.setProperty('--color-secondary', '#636499');
+                  document.body.style.setProperty('--color-tertiary', '#121225');
+                }
+              }}
+            >
+              Toggle Colorblind Mode
+            </button>
+            <button
+              type="button"
               className="py-2 px-3 rounded-lg border-primary-1 border-2 text-primary-1 font-medium"
               onClick={() => {
                 // console.log('modal closed ');

@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+/* eslint-disable no-unused-vars */
+/* eslint-disable camelcase */
+/* eslint-disable react/jsx-pascal-case */
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Background from '../components/Background';
+import Background_accessible from '../components/Background_accessible';
 import Illustration from '../assets/img/Illustration.png';
 import AccessibilityPopup from '../components/AccessibilityPopup';
 
@@ -8,6 +12,13 @@ import logoImg from '../assets/img/logoImg.svg';
 
 export default function LandingPage() {
   const [navbarOpen, setNavbarOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.setProperty('--color-primary', '#5D5FEF');
+    document.body.style.setProperty('--color-secondary', '#636499');
+    document.body.style.setProperty('--color-tertiary', '#121225');
+  }, []);
+
   return (
     <>
       <AccessibilityPopup />
@@ -64,7 +75,7 @@ export default function LandingPage() {
           </div>
         </div>
       </nav>
-      <Background />
+      <Background_accessible />
       <div className="container mx-auto mb-10">
         <div className="flex flex-col-reverse lg:flex-row text-center lg:text-start items-center justify-center lg:justify-between">
           <div>
