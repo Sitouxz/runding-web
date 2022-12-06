@@ -33,7 +33,7 @@ export default function Navbar() {
               <li className="flex">
                 <a
                   className="w-full py-3 lg:mr-3 px-1 text-lg font-medium leading-snug text-primary-3 hover:bg-slate-200"
-                  href="/home"
+                  href="/"
                 >
                   Beranda
                 </a>
@@ -41,7 +41,7 @@ export default function Navbar() {
               <li className="flex">
                 <a
                   className="w-full py-3 lg:mr-3 px-1 text-lg font-medium leading-snug text-primary-3 hover:bg-slate-200"
-                  href="#beranda"
+                  href="/ruang"
                 >
                   Ruang Diskusi
                 </a>

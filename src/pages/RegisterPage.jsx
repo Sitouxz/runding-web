@@ -139,7 +139,7 @@ export default function LoginPage() {
             <p className="text-[15px] text-center mt-[40px]">
               Sudah punya akun?
               <a
-                href="/register"
+                href="/login"
                 className="text-primary-2 font-medium ml-[5px]"
               >
                 Masuk sekarang

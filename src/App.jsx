@@ -1,12 +1,11 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-// import PrivateRoute from './routes/PrivateRoutes';
+import PrivateRoute from './routes/PrivateRoutes';
 
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import HomePage from './pages/HomePage';
 import RuangPage from './pages/RuangPage';
 import AboutPage from './pages/AboutPage';
 import DiscussionDetails from './pages/DiscussionDetails';
@@ -15,6 +14,7 @@ import QuestionDetailPage from './pages/QuestionDetailPage';
 import ProfilePage from './pages/ProfilePage';
 import CreateGroupPage from './pages/CreateGroupPage';
 import ManageGroupPage from './pages/ManageGroupPage';
+import GroupDetailPage from './pages/GroupDetailPage';
 
 function App() {
   return (
@@ -23,7 +23,6 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/ruang" element={<RuangPage />} />
         <Route path="/detail" element={<DiscussionDetails />} />
         <Route path="/quest" element={<QuestionPage />} />
         <Route path="/quest/id" element={<QuestionDetailPage />} />
@@ -31,19 +30,27 @@ function App() {
         <Route path="/create" element={<CreateGroupPage />} />
         <Route path="/manage" element={<ManageGroupPage />} />
         <Route
-          path="/home"
+          path="/ruang"
           element={
-            // <PrivateRoute>
-            <HomePage />
-            // </PrivateRoute>
+            <PrivateRoute>
+              <RuangPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/ruang/:id"
+          element={
+            <PrivateRoute>
+              <GroupDetailPage />
+            </PrivateRoute>
           }
         />
         <Route
           path="/about"
           element={
-            // <PrivateRoute>
-            <AboutPage />
-            // </PrivateRoute>
+            <PrivateRoute>
+              <AboutPage />
+            </PrivateRoute>
           }
         />
       </Routes>

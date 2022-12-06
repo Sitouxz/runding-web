@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Background from '../components/Background';
 import Illustration from '../assets/img/Illustration.png';
+import AccessibilityPopup from '../components/AccessibilityPopup';
 
 import logoImg from '../assets/img/logoImg.svg';
 
@@ -9,6 +10,7 @@ export default function LandingPage() {
   const [navbarOpen, setNavbarOpen] = useState(false);
   return (
     <>
+      <AccessibilityPopup />
       <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-white lg:bg-transparent shadow-lg lg:shadow-none border-b-2 lg:border-none mb-3 ">
         <div className="container mx-auto">
           <div className="flex flex-wrap items-center justify-between">
@@ -36,7 +38,7 @@ export default function LandingPage() {
                 <li className="nav-item">
                   <a
                     className="px-3 py-2 text-md font-medium leading-snug text-primary-3 lg:text-white hover:opacity-75"
-                    href="/home"
+                    href="/"
                   >
                     Beranda
                   </a>
@@ -44,7 +46,7 @@ export default function LandingPage() {
                 <li className="nav-item">
                   <a
                     className="px-3 py-2 text-md font-medium leading-snug text-primary-3 lg:text-white hover:opacity-75"
-                    href="/ruangdiskusi"
+                    href="/ruang"
                   >
                     Ruang Diskusi
                   </a>
