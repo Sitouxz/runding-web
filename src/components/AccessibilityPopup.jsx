@@ -29,10 +29,10 @@ export default function AccessibilityPopup() {
               className="py-2 px-3 rounded-lg bg-primary-1 text-white"
               onClick={() => {
                 // console.log('going home');
-                navigate('/home');
+                navigate('/ruang');
               }}
             >
-              To Home
+              To Ruang Diskusi
             </button>
             <button
               type="button"
