@@ -1,17 +1,33 @@
-/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+
 import api from '../config/api';
 import Background from '../components/Background';
+import AccessibilityPopup from '../components/AccessibilityPopup';
+import BackgroundAccessible from '../components/BackgroundAccessible';
 
 export default function LoginPage() {
   const [passwordShown, setPasswordShown] = useState(false);
   const [responseData, setResponseData] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [accessibility, setAccessibility] = useState(false);
+
+  const renderAccesibility = () => {
+    if (accessibility) {
+      return <BackgroundAccessible />;
+    }
+    return <Background />;
+  };
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.body.style.setProperty('--color-primary', '#5D5FEF');
+    document.body.style.setProperty('--color-secondary', '#636499');
+    document.body.style.setProperty('--color-tertiary', '#121225');
+  }, []);
 
   const togglePasswordVisiblity = () => {
     setPasswordShown(!passwordShown);
@@ -26,7 +42,6 @@ export default function LoginPage() {
       })
       .then((response) => {
         setResponseData(response.data);
-        console.log(response.data);
         if (response.data.status === 'ok') {
           localStorage.setItem('authenticated', true);
           localStorage.setItem('token', response.data.data);
@@ -34,14 +49,15 @@ export default function LoginPage() {
         }
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.log(error);
+        setResponseData({ message: 'Username atau password salah' });
       });
   };
 
   const userLogOut = () => {
     localStorage.removeItem('authenticated');
     localStorage.removeItem('token');
-    console.log('User logged out');
     navigate('/login');
   };
 
@@ -55,7 +71,11 @@ export default function LoginPage() {
 
   return (
     <>
-      <Background />
+      <AccessibilityPopup
+        accessibility={accessibility}
+        setAccess={setAccessibility}
+      />
+      {renderAccesibility()}
       {userLoggedIn() ? (
         <div className="relative flex justify-center items-center h-screen overflow-hidden">
           <div className="w-[385px] sm:w-[485px] bg-[#dbdbdb] bg-opacity-50 px-[44px] py-[65px] rounded-2xl backdrop-filter backdrop-blur-lg">
@@ -65,17 +85,13 @@ export default function LoginPage() {
             <p className="font-medium text-[15px]">
               Kamu sudah masuk ke aplikasi (logged in)
             </p>
-            <div>
-              <p>
-                <Link className="text-primary-2" to="/">
-                  Kembali ke Halaman Utama
-                </Link>
-              </p>
-              <p>
-                <Link className="text-primary-2" to="/ruang">
-                  Telusuri Ruang Diskusi
-                </Link>
-              </p>
+            <div className="flex flex-col">
+              <Link className="text-primary-2" to="/">
+                Kembali ke Halaman Utama
+              </Link>
+              <Link className="text-primary-2" to="/ruang">
+                Telusuri Ruang Diskusi
+              </Link>
               <button
                 onClick={() => userLogOut()}
                 type="button"
@@ -133,9 +149,9 @@ export default function LoginPage() {
                   </button>
                 </div>
               </div>
-              {responseData.status === 'error' && (
+              {responseData.message && (
                 <p className="text-red-500 text-sm mt-3">
-                  {responseData.error}
+                  {responseData.message}
                 </p>
               )}
               <button

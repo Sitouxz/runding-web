@@ -14,7 +14,7 @@ import QuestionDetailPage from './pages/QuestionDetailPage';
 import ProfilePage from './pages/ProfilePage';
 import CreateGroupPage from './pages/CreateGroupPage';
 import ManageGroupPage from './pages/ManageGroupPage';
-import GroupDetailPage from './pages/GroupDetailPage';
+// import GroupDetailPage from './pages/GroupDetailPage';
 
 function App() {
   return (
@@ -29,6 +29,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/create" element={<CreateGroupPage />} />
         <Route path="/manage" element={<ManageGroupPage />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route
           path="/ruang"
           element={
@@ -41,15 +42,23 @@ function App() {
           path="/ruang/:id"
           element={
             <PrivateRoute>
-              <GroupDetailPage />
+              <DiscussionDetails />
             </PrivateRoute>
           }
         />
         <Route
-          path="/about"
+          path="/ruang/question/:id"
           element={
             <PrivateRoute>
-              <AboutPage />
+              <QuestionPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/question/detail/:questionid"
+          element={
+            <PrivateRoute>
+              <QuestionDetailPage />
             </PrivateRoute>
           }
         />

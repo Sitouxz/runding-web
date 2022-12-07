@@ -1,7 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import Background from '../components/Background';
+import BackgroundAccessible from '../components/BackgroundAccessible';
+import AccessibilityPopup from '../components/AccessibilityPopup';
 
 import api from '../config/api';
 
@@ -13,8 +16,22 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [responseData, setResponseData] = useState('');
+  const [accessibility, setAccessibility] = useState(false);
+
+  const renderAccesibility = () => {
+    if (accessibility) {
+      return <BackgroundAccessible noBig />;
+    }
+    return <Background noBig />;
+  };
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.body.style.setProperty('--color-primary', '#5D5FEF');
+    document.body.style.setProperty('--color-secondary', '#636499');
+    document.body.style.setProperty('--color-tertiary', '#121225');
+  }, []);
 
   const togglePasswordVisiblity = () => {
     setPasswordShown(!passwordShown);
@@ -61,7 +78,8 @@ export default function LoginPage() {
 
   return (
     <>
-      <Background />
+      <AccessibilityPopup accessibility={accessibility} setAccess={setAccessibility} />
+      {renderAccesibility()}
       <div className="relative flex justify-center items-center h-screen overflow-hidden">
         <div className="w-[385px] sm:w-[485px] bg-[#dbdbdb] bg-opacity-50 px-[44px] py-[65px] rounded-2xl backdrop-filter backdrop-blur-lg">
           <h1 className="text-[60px] font-bold text-primary-1">Daftar</h1>
