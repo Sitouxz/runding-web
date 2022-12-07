@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import api from '../config/api';
 
@@ -85,7 +85,7 @@ export default function LoginPage() {
             </p>
             <div>
               <p><a className="text-primary-2" href="/">Kembali ke Halaman Utama</a></p>
-              <p><a className="text-primary-2" href="/ruang">Telusuri Ruang Diskusi</a></p>
+              <p><Link className="text-primary-2" to="/ruang">Telusuri Ruang Diskusi</Link></p>
               <button
                 onClick={() => userLogOut()}
                 type="button"

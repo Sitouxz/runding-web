@@ -11,7 +11,7 @@
 /* eslint-disable no-else-return */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-wrap-multilines */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import Navbar from '../layouts/Navbar';
@@ -31,6 +31,7 @@ export default function HomePage() {
   const [meetlink, setMeetLink] = useState('');
   const [created, setCreated] = useState('');
   const [membergroup, setMemberGroup] = useState(false);
+  const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
   const [accessibility, setAccessibility] = useState(false);
 
   const renderAccesibility = () => {
@@ -86,6 +87,7 @@ export default function HomePage() {
       .then((response) => {
         // eslint-disable-next-line no-console
         console.log(response.data);
+        window.location.reload();
       })
       .catch((error) => {
         // eslint-disable-next-line no-console
@@ -104,6 +106,7 @@ export default function HomePage() {
       .then((response) => {
         // eslint-disable-next-line no-console
         console.log(response.data);
+        window.location.reload();
       })
       .catch((error) => {
         // eslint-disable-next-line no-console
@@ -120,7 +123,7 @@ export default function HomePage() {
         <button
           onClick={() => navigate(`/ruang/question/${params.id}`)}
           type="button"
-          className="flex justify-end items-center text-white w-[70px] h-[40px] mt-[40px] bg-primary-2 text-[15px] font-medium p-0 rounded-[17px] relative hover:shadow-primary-1 shadow-2xl"
+          className="flex justify-end items-center text-white w-[70px] h-[60px] mt-[40px] bg-primary-2 text-[15px] font-medium p-0 rounded-[17px] relative hover:shadow-primary-1 shadow-2xl"
         >
         <span className="text-center w-full">Buka halaman question</span>
         </button>
@@ -156,18 +159,22 @@ export default function HomePage() {
             {membergroup ? `${created}` : 'Maaf, anda bukan anggota'}
         </p>
         <button
-          onClick={() => userJoin()}
+          onClick={() => {
+            userJoin();
+          }}
           type="button"
-          className="flex justify-end items-center text-white w-[70px] h-[40px] mt-[40px] bg-primary-2 text-[15px] font-medium p-0 rounded-[17px] relative hover:shadow-primary-1 shadow-2xl"
+          className="flex justify-end items-center text-white w-[70px] h-[60px] mt-[40px] bg-primary-2 text-[15px] font-medium p-0 rounded-[17px] relative hover:shadow-primary-1 shadow-2xl"
         >
         <span className="text-center w-full">Join Ruang Diskusi</span>
         </button>
         <button
-          onClick={() => userLeave()}
+          onClick={() => {
+            userLeave();
+          }}
           type="button"
-          className="flex justify-end items-center text-white w-[70px] h-[40px] mt-[40px] bg-primary-2 text-[15px] font-medium p-0 rounded-[17px] relative hover:shadow-primary-1 shadow-2xl"
+          className="flex justify-end items-center text-white w-[70px] h-[60px] mt-[40px] bg-primary-2 text-[15px] font-medium p-0 rounded-[17px] relative hover:shadow-primary-1 shadow-2xl"
         >
-        <span className="text-center w-full">Join Ruang Diskusi</span>
+        <span className="text-center w-full">Leave Ruang Diskusi</span>
         </button>
       </div>
     </>

@@ -29,7 +29,7 @@ export default function CreateGroup() {
       <Navbar />
       {renderAccesibility()}
       <div className="container mx-auto px-2 mt-4 mb-10">
-        <a href="/group" className="py-3">
+        <a href="/ruang" className="py-3">
           {'< Kembali'}
         </a>
         <div className="flex flex-col justify-center items-center gap-3 w-full mt-3">
