@@ -1,19 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import AccessibilityPopup from '../components/AccessibilityPopup';
 import Navbar from '../layouts/Navbar';
 import Background from '../components/Background';
+import BackgroundAccessible from '../components/BackgroundAccessible';
 
 import avatar from '../assets/img/avatar.png';
 
 import QuestionResponseCard from '../components/QuestionResponseCard';
 
 export default function QuestionDetailPage() {
+  const [accessibility, setAccessibility] = useState(false);
+
+  useEffect(() => {
+    document.body.style.setProperty('--color-primary', '#5D5FEF');
+    document.body.style.setProperty('--color-secondary', '#636499');
+    document.body.style.setProperty('--color-tertiary', '#121225');
+  }, []);
+
+  const renderAccesibility = () => {
+    if (accessibility) {
+      return <BackgroundAccessible noBig />;
+    }
+    return <Background noBig />;
+  };
+
   return (
     <>
-      <AccessibilityPopup />
+      <AccessibilityPopup accessibility={accessibility} setAccess={setAccessibility} />
       <Navbar />
-      <Background noBig />
+      {renderAccesibility()}
       <div className="container mx-auto px-2 mt-4 mb-10">
         <a href="/quest" className="py-3">
           {'< Kembali'}

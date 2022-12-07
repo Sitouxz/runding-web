@@ -1,17 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import AccessibilityPopup from '../components/AccessibilityPopup';
 import Background from '../components/Background';
 import Navbar from '../layouts/Navbar';
+import RandomFacts from '../components/RandomFacts';
+import BackgroundAccessible from '../components/BackgroundAccessible';
 
 import avatarBig from '../assets/img/avatarBig.png';
 
 export default function ProfilePage() {
+  const [accessibility, setAccessibility] = useState(false);
+
+  useEffect(() => {
+    document.body.style.setProperty('--color-primary', '#5D5FEF');
+    document.body.style.setProperty('--color-secondary', '#636499');
+    document.body.style.setProperty('--color-tertiary', '#121225');
+  }, []);
+
+  const renderAccesibility = () => {
+    if (accessibility) {
+      return <BackgroundAccessible noBig />;
+    }
+    return <Background noBig />;
+  };
+
   return (
     <>
-      <AccessibilityPopup />
+      <AccessibilityPopup accessibility={accessibility} setAccess={setAccessibility} />
       <Navbar />
-      <Background noBig />
+      {renderAccesibility()}
       <div className="container mx-auto lg:grid grid-rows-1 grid-cols-3 px-2 my-10">
         <div className="col-span-1 flex flex-col items-center">
           <img src={avatarBig} alt="" />
@@ -84,6 +101,7 @@ export default function ProfilePage() {
             </button>
           </div>
         </div>
+        <RandomFacts />
       </div>
     </>
   );

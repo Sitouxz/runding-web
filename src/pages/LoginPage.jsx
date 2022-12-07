@@ -6,12 +6,22 @@ import { useNavigate } from 'react-router-dom';
 import api from '../config/api';
 
 import Background from '../components/Background';
+import AccessibilityPopup from '../components/AccessibilityPopup';
+import BackgroundAccessible from '../components/BackgroundAccessible';
 
 export default function LoginPage() {
   const [passwordShown, setPasswordShown] = useState(false);
   const [responseData, setResponseData] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [accessibility, setAccessibility] = useState(false);
+
+  const renderAccesibility = () => {
+    if (accessibility) {
+      return <BackgroundAccessible />;
+    }
+    return <Background />;
+  };
 
   const navigate = useNavigate();
 
@@ -65,7 +75,8 @@ export default function LoginPage() {
   if (userAuthenticated) {
     return (
       <>
-        <Background />
+        <AccessibilityPopup accessibility={accessibility} setAccess={setAccessibility} />
+        {renderAccesibility()}
         <div className="relative flex justify-center items-center h-screen overflow-hidden">
           <div className="w-[385px] sm:w-[485px] bg-[#dbdbdb] bg-opacity-50 px-[44px] py-[65px] rounded-2xl backdrop-filter backdrop-blur-lg">
             <h1 className="text-[45px] font-bold text-primary-1">User Logged In</h1>
@@ -92,7 +103,8 @@ export default function LoginPage() {
   if (!userAuthenticated) {
     return (
       <>
-        <Background />
+        <AccessibilityPopup accessibility={accessibility} setAccess={setAccessibility} />
+        {renderAccesibility()}
         <div className="relative flex justify-center items-center h-screen overflow-hidden">
           <div className="w-[385px] sm:w-[485px] bg-[#dbdbdb] bg-opacity-50 px-[44px] py-[65px] rounded-2xl backdrop-filter backdrop-blur-lg">
             <h1 className="text-[60px] font-bold text-primary-1">Masuk</h1>

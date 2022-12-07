@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-wrap-multilines */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Popup from 'reactjs-popup';
 
@@ -8,14 +8,29 @@ import AccessibilityPopup from '../components/AccessibilityPopup';
 import Navbar from '../layouts/Navbar';
 import Background from '../components/Background';
 import QuestionCard from '../components/QuestionCard';
+import BackgroundAccessible from '../components/BackgroundAccessible';
 
 export default function QuestionPage() {
+  const [accessibility, setAccessibility] = useState(false);
+
+  useEffect(() => {
+    document.body.style.setProperty('--color-primary', '#5D5FEF');
+    document.body.style.setProperty('--color-secondary', '#636499');
+    document.body.style.setProperty('--color-tertiary', '#121225');
+  }, []);
+
+  const renderAccesibility = () => {
+    if (accessibility) {
+      return <BackgroundAccessible noBig />;
+    }
+    return <Background noBig />;
+  };
+
   return (
     <>
-      <AccessibilityPopup />
+      <AccessibilityPopup accessibility={accessibility} setAccess={setAccessibility} />
       <Navbar />
-      <Background noBig />
-
+      {renderAccesibility()}
       <div className="container mx-auto px-2 m-4">
         <div className="flex flex-col lg:flex-row mb-4">
           <input

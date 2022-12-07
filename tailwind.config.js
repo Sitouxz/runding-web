@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+require('@mertasan/tailwindcss-variables');
+
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
@@ -14,9 +16,18 @@ module.exports = {
         logo: ['Manrope', 'sans-serif'],
       },
     },
+    variables: {
+      DEFAULT: {
+        color: {
+          primary: '#5D5FEF',
+          secondary: '#636499',
+          tertiary: '#121225',
+        },
+      },
+    },
     fontFamily: {
       sans: ['Poppins', 'sans-serif'],
     },
   },
-  plugins: [],
+  plugins: ['@mertasan/tailwindcss-variables'],
 };

@@ -1,10 +1,16 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/jsx-wrap-multilines */
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Popup from 'reactjs-popup';
 
-export default function AccessibilityPopup() {
+export default function AccessibilityPopup({ accessibility, setAccess }) {
   const navigate = useNavigate();
+  let accesibilityBool = accessibility;
+  const handleBackgroundAccesability = useCallback(() => {
+    setAccess(!(accesibilityBool));
+    accesibilityBool = !(accesibilityBool);
+  }, [setAccess]);
   return (
     <Popup
       trigger={
@@ -47,7 +53,8 @@ export default function AccessibilityPopup() {
             <button
               type="button"
               className="py-2 px-3 rounded-lg bg-primary-2 text-white"
-              onClick={() => {
+              onClick={async () => {
+                handleBackgroundAccesability();
                 const colorAccess = document.body.style.getPropertyValue('--color-primary');
                 if (colorAccess !== '#cc79a7') {
                   document.body.style.setProperty('--color-primary', '#cc79a7');

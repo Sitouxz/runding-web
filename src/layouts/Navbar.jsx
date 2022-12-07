@@ -58,7 +58,7 @@ export default function Navbar() {
             <div className="w-full lg:w-auto flex justify-between items-center gap-2 border-b-2 lg:border-none">
               <a
                 className="flex items-center gap-3 py-2 text-md font-medium leading-snug text-primary-3 hover:opacity-75"
-                href="#beranda"
+                href="/profile"
               >
                 <img src={avatar} alt="" className="w-10 h-10" />
                 <span className="lg:hidden">John Doe</span>

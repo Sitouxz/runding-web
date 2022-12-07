@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Navbar from '../layouts/Navbar';
 import Background from '../components/Background';
 import avatar from '../assets/img/avatar.png';
+import AccessibilityPopup from '../components/AccessibilityPopup';
+import BackgroundAccessible from '../components/BackgroundAccessible';
 
 export default function DiscussionDetails() {
+  const [accessibility, setAccessibility] = useState(false);
+
+  useEffect(() => {
+    document.body.style.setProperty('--color-primary', '#5D5FEF');
+    document.body.style.setProperty('--color-secondary', '#636499');
+    document.body.style.setProperty('--color-tertiary', '#121225');
+  }, []);
+
+  const renderAccesibility = () => {
+    if (accessibility) {
+      return <BackgroundAccessible noBig />;
+    }
+    return <Background noBig />;
+  };
+
   return (
     <>
+      <AccessibilityPopup accessibility={accessibility} setAccess={setAccessibility} />
       <Navbar />
-      <Background noBig />
+      {renderAccesibility()}
       <div className="container mx-auto px-2 mt-4">
         <a href="/home" className="py-3">
           {'< Kembali'}

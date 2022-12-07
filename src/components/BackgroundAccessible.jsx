@@ -4,7 +4,7 @@ import ellipse from '../assets/img/Ellipse_accessible.svg';
 import ellipse2 from '../assets/img/Ellipse-1_accessible.svg';
 import ellipse3 from '../assets/img/Ellipse-2_accessible.svg';
 
-export default function Background(props) {
+export default function BackgroundAccessible(props) {
   const { noBig } = props;
   return (
     <div>

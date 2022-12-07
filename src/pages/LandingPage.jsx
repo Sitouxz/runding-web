@@ -1,17 +1,19 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 /* eslint-disable react/jsx-pascal-case */
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Background from '../components/Background';
-import Background_accessible from '../components/Background_accessible';
+import BackgroundAccessible from '../components/BackgroundAccessible';
 import Illustration from '../assets/img/Illustration.png';
 import AccessibilityPopup from '../components/AccessibilityPopup';
+import RandomFacts from '../components/RandomFacts';
 
 import logoImg from '../assets/img/logoImg.svg';
 
 export default function LandingPage() {
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const [accessibility, setAccessibility] = useState(false);
 
   useEffect(() => {
     document.body.style.setProperty('--color-primary', '#5D5FEF');
@@ -19,9 +21,16 @@ export default function LandingPage() {
     document.body.style.setProperty('--color-tertiary', '#121225');
   }, []);
 
+  const renderAccesibility = () => {
+    if (accessibility) {
+      return <BackgroundAccessible />;
+    }
+    return <Background />;
+  };
+
   return (
     <>
-      <AccessibilityPopup />
+      <AccessibilityPopup accesibility={accessibility} setAccess={setAccessibility} />
       <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-white lg:bg-transparent shadow-lg lg:shadow-none border-b-2 lg:border-none mb-3 ">
         <div className="container mx-auto">
           <div className="flex flex-wrap items-center justify-between">
@@ -75,7 +84,7 @@ export default function LandingPage() {
           </div>
         </div>
       </nav>
-      <Background_accessible />
+      {renderAccesibility()}
       <div className="container mx-auto mb-10">
         <div className="flex flex-col-reverse lg:flex-row text-center lg:text-start items-center justify-center lg:justify-between">
           <div>
@@ -102,6 +111,7 @@ export default function LandingPage() {
             </div>
           </div>
           <img src={Illustration} alt="" className="w-96 md:w-auto" />
+          <RandomFacts />
         </div>
       </div>
     </>
