@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import logoImg from '../assets/img/logoImg.svg';
 import avatar from '../assets/img/avatar.png';
@@ -31,38 +32,38 @@ export default function Navbar() {
           >
             <ul className="flex flex-col-reverse justify-center lg:items-center lg:flex-row list-none lg:ml-auto w-full lg:w-auto">
               <li className="flex">
-                <a
+                <Link
                   className="w-full py-3 lg:mr-3 px-1 text-lg font-medium leading-snug text-primary-3 hover:bg-slate-200"
-                  href="/"
+                  to="/"
                 >
                   Beranda
-                </a>
+                </Link>
               </li>
               <li className="flex">
-                <a
+                <Link
                   className="w-full py-3 lg:mr-3 px-1 text-lg font-medium leading-snug text-primary-3 hover:bg-slate-200"
-                  href="/ruang"
+                  to="/ruang"
                 >
                   Ruang Diskusi
-                </a>
+                </Link>
               </li>
               <li className="flex">
-                <a
+                <Link
                   className="w-full py-3 lg:mr-3 px-1 text-lg font-medium leading-snug text-primary-3 hover:bg-slate-200"
-                  href="/about"
+                  to="/about"
                 >
                   Tentang Kami
-                </a>
+                </Link>
               </li>
             </ul>
             <div className="w-full lg:w-auto flex justify-between items-center gap-2 border-b-2 lg:border-none">
-              <a
+              <Link
                 className="flex items-center gap-3 py-2 text-md font-medium leading-snug text-primary-3 hover:opacity-75"
-                href="/profile"
+                to="/profile"
               >
                 <img src={avatar} alt="" className="w-10 h-10" />
                 <span className="lg:hidden">John Doe</span>
-              </a>
+              </Link>
               <a
                 className="text-md font-medium leading-snug text-primary-3 hover:opacity-75"
                 href="#beranda"

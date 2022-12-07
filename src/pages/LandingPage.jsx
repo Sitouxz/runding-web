@@ -35,10 +35,10 @@ export default function LandingPage() {
         <div className="container mx-auto">
           <div className="flex flex-wrap items-center justify-between">
             <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-              <a className="flex font-bold font-logo text-[36px] " href="/">
+              <Link className="flex font-bold font-logo text-[36px] " to="/">
                 <img src={logoImg} alt="R" className="mr-2" />
                 Runding
-              </a>
+              </Link>
               <button
                 className="text-black cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
                 type="button"
@@ -56,28 +56,28 @@ export default function LandingPage() {
             >
               <ul className="flex flex-col items-start justify-center lg:flex-row list-none lg:ml-auto mt-2">
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="px-3 py-2 text-md font-medium leading-snug text-primary-3 lg:text-white hover:opacity-75"
-                    href="/"
+                    to="/"
                   >
                     Beranda
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="px-3 py-2 text-md font-medium leading-snug text-primary-3 lg:text-white hover:opacity-75"
-                    href="/ruang"
+                    to="/ruang"
                   >
                     Ruang Diskusi
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
+                  <Link
                     className="px-3 py-2 text-md font-medium leading-snug text-primary-3 lg:text-white hover:opacity-75"
-                    href="/about"
+                    to="/about"
                   >
                     Tentang Kami
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

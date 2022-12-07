@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Popup from 'reactjs-popup';
+import { useParams } from 'react-router-dom';
 
 import AccessibilityPopup from '../components/AccessibilityPopup';
 import Navbar from '../layouts/Navbar';
@@ -12,6 +13,8 @@ import BackgroundAccessible from '../components/BackgroundAccessible';
 
 export default function QuestionPage() {
   const [accessibility, setAccessibility] = useState(false);
+
+  const param = useParams();
 
   useEffect(() => {
     document.body.style.setProperty('--color-primary', '#5D5FEF');
@@ -38,6 +41,11 @@ export default function QuestionPage() {
             placeholder="Cari ruang diskusi"
             className="border-2 border-primary-1 rounded-lg flex-grow py-1 px-2"
           />
+          <p>
+            Parameter grup :
+            {' '}
+            {param.id}
+          </p>
           <Popup
             trigger={
               <button

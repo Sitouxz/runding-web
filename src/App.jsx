@@ -46,6 +46,22 @@ function App() {
           }
         />
         <Route
+          path="/ruang/question/:id"
+          element={
+            <PrivateRoute>
+              <QuestionPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/question/detail/:questionid"
+          element={
+            <PrivateRoute>
+              <QuestionDetailPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
           path="/about"
           element={
             <PrivateRoute>
