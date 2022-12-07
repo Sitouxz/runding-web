@@ -1,23 +1,69 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-wrap-multilines */
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
 import Popup from 'reactjs-popup';
-
+import { useParams } from 'react-router-dom';
 import AccessibilityPopup from '../components/AccessibilityPopup';
 import Navbar from '../layouts/Navbar';
 import Background from '../components/Background';
 import QuestionCard from '../components/QuestionCard';
+import BackgroundAccessible from '../components/BackgroundAccessible';
+
+import api from '../config/api';
 
 export default function QuestionPage() {
+  const [accessibility, setAccessibility] = useState(false);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const param = useParams();
+
+  useEffect(() => {
+    document.body.style.setProperty('--color-primary', '#5D5FEF');
+    document.body.style.setProperty('--color-secondary', '#636499');
+    document.body.style.setProperty('--color-tertiary', '#121225');
+  }, []);
+
+  const renderAccesibility = () => {
+    if (accessibility) {
+      return <BackgroundAccessible noBig />;
+    }
+    return <Background noBig />;
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    api
+      .get(`/runding/posts/${param.id}`, {
+        headers: {
+          'auth-token': token, // the token is a variable which holds the token
+        },
+      })
+      .then((response) => {
+        setData(response.data);
+        // eslint-disable-next-line no-console
+        console.log(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.log(error);
+      });
+  }, []);
+
   return (
     <>
-      <AccessibilityPopup />
+      <AccessibilityPopup
+        accessibility={accessibility}
+        setAccess={setAccessibility}
+      />
       <Navbar />
-      <Background noBig />
-
+      {renderAccesibility()}
       <div className="container mx-auto px-2 m-4">
-        <div className="flex flex-col lg:flex-row mb-4">
+        <div className="flex flex-col lg:flex-row">
           <input
             type="text"
             placeholder="Cari ruang diskusi"
@@ -123,14 +169,31 @@ export default function QuestionPage() {
             )}
           </Popup>
         </div>
+        <p className="mb-3">Parameter grup : {param.id}</p>
         <div>
           <h2 className="font-semibold mb-4">Semua Pertanyaan</h2>
-          <QuestionCard />
-          <QuestionCard />
-          <QuestionCard />
-          <QuestionCard />
-          <QuestionCard />
-          <QuestionCard />
+          {loading ?? (
+            <div className="flex justify-center items-center pt-20">
+              <i className="fa-solid fa-circle-notch animate-spin text-3xl text-primary-1" />
+            </div>
+          )}
+          {data.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {data.map((item) => (
+                <QuestionCard
+                  key={item._id}
+                  item={item}
+                  setAccess={setAccessibility}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="flex justify-center items-center pt-20">
+              <p className="text-center text-primary-1">
+                Belum ada pertanyaan yang diajukan
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </>

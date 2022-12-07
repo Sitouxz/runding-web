@@ -13,10 +13,12 @@
 import React, { useState, useEffect } from 'react';
 import Popup from 'reactjs-popup';
 import { useNavigate } from 'react-router-dom';
+
 import AccessibilityPopup from '../components/AccessibilityPopup';
 import Navbar from '../layouts/Navbar';
 import Background from '../components/Background';
 import DiscussionRoomCard from '../components/DiscussionRoomCard';
+import BackgroundAccessible from '../components/BackgroundAccessible';
 
 import api from '../config/api';
 
@@ -24,6 +26,14 @@ export default function HomePage() {
   const [discussionRooms, setDiscussionRooms] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [accessibility, setAccessibility] = useState(false);
+
+  const renderAccesibility = () => {
+    if (accessibility) {
+      return <BackgroundAccessible noBig />;
+    }
+    return <Background noBig />;
+  };
 
   const navigate = useNavigate();
 
@@ -43,6 +53,9 @@ export default function HomePage() {
         // eslint-disable-next-line no-console
         console.log(error);
       });
+    document.body.style.setProperty('--color-primary', '#5D5FEF');
+    document.body.style.setProperty('--color-secondary', '#636499');
+    document.body.style.setProperty('--color-tertiary', '#121225');
   }, []);
 
   // search function for discussion rooms
@@ -64,9 +77,9 @@ export default function HomePage() {
 
   return (
     <>
-      <AccessibilityPopup />
+      <AccessibilityPopup accessibility={accessibility} setAccess={setAccessibility} />
       <Navbar />
-      <Background noBig />
+      {renderAccesibility()}
       <div className="container mx-auto px-2 mt-4">
         <div className="flex flex-col lg:flex-row mb-4">
           <form onSubmit={handleSubmit} className="flex-grow">
