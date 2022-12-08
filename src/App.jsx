@@ -14,6 +14,7 @@ import QuestionDetailPage from './pages/QuestionDetailPage';
 import ProfilePage from './pages/ProfilePage';
 import CreateGroupPage from './pages/CreateGroupPage';
 import ManageGroupPage from './pages/ManageGroupPage';
+import Web404Page from './pages/Web404Page';
 // import GroupDetailPage from './pages/GroupDetailPage';
 
 function App() {
@@ -62,6 +63,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route path="*" exact component={<Web404Page />} />
       </Routes>
     </BrowserRouter>
   );

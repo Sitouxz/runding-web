@@ -5,7 +5,7 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import React, { useState, useEffect } from 'react';
 import Popup from 'reactjs-popup';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import AccessibilityPopup from '../components/AccessibilityPopup';
 import Navbar from '../layouts/Navbar';
 import Background from '../components/Background';
@@ -63,6 +63,9 @@ export default function QuestionPage() {
       <Navbar />
       {renderAccesibility()}
       <div className="container mx-auto px-2 m-4">
+        <Link to={`/ruang/${param.id}`} className="py-3">
+          {'< Kembali'}
+        </Link>
         <div className="flex flex-col lg:flex-row">
           <input
             type="text"

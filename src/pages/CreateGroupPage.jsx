@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import AccessibilityPopup from '../components/AccessibilityPopup';
 import Navbar from '../layouts/Navbar';
@@ -29,9 +30,9 @@ export default function CreateGroup() {
       <Navbar />
       {renderAccesibility()}
       <div className="container mx-auto px-2 mt-4 mb-10">
-        <a href="/ruang" className="py-3">
+        <Link to="/ruang" className="py-3">
           {'< Kembali'}
-        </a>
+        </Link>
         <div className="flex flex-col justify-center items-center gap-3 w-full mt-3">
           <img src={avatarBig} alt="" />
           <button
