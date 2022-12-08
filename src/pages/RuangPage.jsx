@@ -86,117 +86,35 @@ export default function HomePage() {
             <input
               type="text"
               placeholder="Cari ruang diskusi"
-              className="border-2 border-primary-1 rounded-lg flex-grow py-1 px-2 w-full"
+              className="border-2 border-primary-1 rounded-lg flex-grow py-1 px-2 w-10/12 ml-1"
               value={searchTerm}
               onChange={handleChange}
             />
+            <button
+              type="submit"
+              className="py-1 px-6 sm:px-10 bg-primary-1 rounded-md mt-2 ml-2 text-white"
+            >
+              Cari
+            </button>
           </form>
-          <Popup
-            trigger={
-              <button
-                type="button"
-                className="py-1 px-6 sm:px-10 bg-primary-1 rounded-md mt-2 lg:mt-0 lg:ml-2 text-white"
-              >
-                Buat baru
-              </button>
-            }
-            modal
-            nested
-          >
-            {(close) => (
-              <div className="bg-white rounded-lg shadow-lg p-4 m-4 max-h-screen pb-24 overflow-scroll">
-                <h2 className="font-semibold text-xl mb-4">
-                  Ajukan pertanyaan
-                </h2>
-                <div>
-                  <p>Cara mengajukan pertanyaan:</p>
-                  <ol className="list-decimal list-inside">
-                    <li>
-                      Pastikan pertanyaan Anda belum pernah di bahas pada forum
-                      ini, Anda bisa melakukan searching terlebih dahulu dengan
-                      memasukkan kata kunci.
-                    </li>
-                    <li>
-                      Mulailah dengan menuliskan judul pertanyaan Anda secara
-                      singkat dan jelas
-                    </li>
-                    <li>
-                      Sampaikan kendala permasalahan Anda dengan tidak
-                      berbelit-belit
-                    </li>
-                    <li>
-                      Tambahkan tag yang membantu memunculkan pertanyaan Anda
-                      kepada anggota komunitas yang lain.
-                    </li>
-                  </ol>
-                </div>
-                <div className="mt-3">
-                  <label
-                    htmlFor="title"
-                    className="font-semibold text-primary-1 text-lg"
-                  >
-                    Judul pertanyaan
-                  </label>
-                  <input
-                    type="text"
-                    id="title"
-                    className="border border-primary-1 rounded-lg flex-grow py-1 px-2 w-full"
-                  />
-                </div>
-                <div className="mt-3">
-                  <label
-                    htmlFor="description"
-                    className="font-semibold text-primary-1 text-lg"
-                  >
-                    Tuliskan peretanyaanmu
-                  </label>
-
-                  <textarea
-                    id="description"
-                    className="border border-primary-1 rounded-lg flex-grow py-1 px-2 w-full h-40"
-                  />
-                </div>
-                <div className="mt-3">
-                  <label
-                    htmlFor="tags"
-                    className="font-semibold text-primary-1 text-lg"
-                  >
-                    Tambahkan kata kunci
-                  </label>
-                  <span> *minimal 3 kata kunci</span>
-                  <input
-                    type="text"
-                    id="tags"
-                    className="border border-primary-1 rounded-lg flex-grow py-1 px-2 w-full"
-                  />
-                </div>
-                <div className="mt-3 text-end">
-                  <button
-                    type="button"
-                    className="mr-3 py-2 px-6 sm:px-10 border-2 border-primary-1 rounded-md mt-2 lg:mt-0 lg:ml-2 text-primary-1 font-semibold"
-                    onClick={() => {
-                      close();
-                    }}
-                  >
-                    Batal
-                  </button>
-                  <button
-                    type="button"
-                    className="py-2 px-6 sm:px-10 bg-primary-1 shadow-lg shadow-primary-1 rounded-md mt-2 lg:mt-0 lg:ml-2 text-white"
-                  >
-                    Buat Diskusi
-                  </button>
-                </div>
-              </div>
-            )}
-          </Popup>
         </div>
       </div>
       <div className="container mx-auto px-2 mt-4">
-        <h2 className="font-semibold mb-4">
-          Daftar
-          <span className="text-primary-1"> Ruang Diskusi</span>
-        </h2>
+        <div className="flex flex-col lg:flex-row mb-3">
+          <h2 className="font-semibold mt-auto mb-auto">
+            Daftar
+            <span className="text-primary-1"> Ruang Diskusi</span>
+          </h2>
+          <button
+            onClick={() => {
+              navigate('/create');
+            }}
+            type="button"
+            className="flex justify-center items-center text-center text-white ml-[7px] w-[120px] h-[40px] bg-primary-2 text-[15px] font-medium p-0 rounded-[10px] relative hover:shadow-primary-1 shadow-2xl"
+          >
+            Buat Ruang
+          </button>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           {searchResults.map((discussionRoom) => (
             <DiscussionRoomCard

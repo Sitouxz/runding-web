@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import api from '../config/api';
 
@@ -51,9 +51,9 @@ export default function ManageGroupPage() {
       <Navbar />
       {renderAccesibility()}
       <div className="container mx-auto px-2 mt-4 mb-10">
-        <a href="/profile" className="py-3">
+        <Link to="/profile" className="py-3">
           {'< Kembali'}
-        </a>
+        </Link>
         <span className="text-primary-1 font-medium"> | Ruang diskusiku</span>
         <button
           onClick={() => {

@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable comma-dangle */
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import Navbar from '../layouts/Navbar';
 import Background from '../components/Background';
 import avatar from '../assets/img/avatar.png';
@@ -16,12 +16,13 @@ export default function DiscussionDetails() {
   const [loading, setLoading] = useState(true);
 
   const params = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.body.style.setProperty('--color-primary', '#5D5FEF');
     document.body.style.setProperty('--color-secondary', '#636499');
     document.body.style.setProperty('--color-tertiary', '#121225');
-  }, [accessibility]);
+  }, []);
 
   const renderAccesibility = () => {
     if (accessibility) {
@@ -155,31 +156,97 @@ export default function DiscussionDetails() {
               <p>{data.data.deskripsi || ''}</p>
             </div>
             <div className="mt-5 text-end">
-              <Link
-                to={`/ruang/question/${params.id}`}
-                className="bg-primary-1 text-white font-semibold px-6 py-3 flex-grow rounded-lg shadow-lg shadow-primary-1 mr-3"
-              >
-                Questions
-              </Link>
               {
-                // eslint-disable-next-line no-nested-ternary
-                !data.member ? (
-                  <button
-                    type="button"
-                    className="bg-primary-1 text-white font-semibold px-6 py-3 flex-grow rounded-lg shadow-lg shadow-primary-1"
-                    onClick={userJoin}
+                (() => {
+                  if (data.member || data.author) {
+                    if (data.data.meetLink) {
+                      return (
+                        <button
+                          type="button"
+                          onClick={() => window.open(`https://${data.data.meetLink}`, '_blank', 'noopener,noreferrer')}
+                          className="bg-primary-1 text-white font-semibold px-6 py-3 flex-grow rounded-lg shadow-lg shadow-primary-1 mr-3"
+                        >
+                          Open Meeting
+                        </button>
+                      );
+                    } if (!data.data.meetLink) {
+                      return (
+                        <button
+                          disabled
+                          type="button"
+                          className="bg-white text-black font-semibold px-6 py-3 flex-grow rounded-lg shadow-lg shadow-primary-1 mr-3"
+                        >
+                          No Meeting
+                        </button>
+                      );
+                    }
+
+                    return (
+                      <div />
+                    );
+                  }
+
+                  return (
+                    <div />
+                  );
+                })()
+              }
+              {
+                data.member || data.author ? (
+                  <Link
+                    to={`/ruang/question/${params.id}`}
+                    className="bg-primary-1 text-white font-semibold px-6 py-3 flex-grow rounded-lg shadow-lg shadow-primary-1 mr-3"
                   >
-                    Bergabung
-                  </button>
+                    Questions
+                  </Link>
                 ) : (
                   <button
+                    disabled
                     type="button"
-                    className="bg-primary-1 text-white font-semibold px-6 py-3 flex-grow rounded-lg shadow-lg shadow-primary-1"
-                    onClick={userLeave}
+                    className="bg-white text-black font-semibold px-6 py-3 flex-grow rounded-lg shadow-lg shadow-primary-1 mr-3"
                   >
-                    Keluar
+                    Not a Member
                   </button>
                 )
+              }
+              {
+                (() => {
+                  if (data.author) {
+                    return (
+                      <button
+                        type="button"
+                        onClick={() => navigate(`/ruang/administrator/${params.id}`)}
+                        className="bg-primary-1 text-green-400 font-semibold px-6 py-3 flex-grow rounded-lg shadow-lg shadow-primary-1"
+                      >
+                        Admin
+                      </button>
+                    );
+                  } if (!data.member) {
+                    return (
+                      <button
+                        type="button"
+                        className="bg-primary-1 text-white font-semibold px-6 py-3 flex-grow rounded-lg shadow-lg shadow-primary-1"
+                        onClick={userJoin}
+                      >
+                        Bergabung
+                      </button>
+                    );
+                  } if (data.member) {
+                    return (
+                      <button
+                        type="button"
+                        className="bg-primary-1 text-white font-semibold px-6 py-3 flex-grow rounded-lg shadow-lg shadow-primary-1"
+                        onClick={userLeave}
+                      >
+                        Keluar
+                      </button>
+                    );
+                  }
+
+                  return (
+                    <div />
+                  );
+                })()
               }
             </div>
           </div>

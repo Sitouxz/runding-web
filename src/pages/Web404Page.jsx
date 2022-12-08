@@ -27,9 +27,8 @@ export default function AboutPage() {
       <AccessibilityPopup accessibility={accessibility} setAccess={setAccessibility} />
       <Navbar />
       {renderAccesibility()}
-      <div className="container mx-auto px-2">
+      <div className="container mx-auto px-2 mt-20">
         <div className="mb-5 lg:w-1/2">
-          <h1 className="text-3xl font-semibold mb-3">Apa itu Runding</h1>
           <p>
             Maaf halaman tidak ditemukan atau anda tidak disahkan mengakses halaman tersebut.
           </p>
