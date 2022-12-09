@@ -8,7 +8,7 @@ export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
   return (
     <nav className="relative flex flex-wrap items-center justify-between bg-white shadow-lg lg:shadow-none border-b-2 mb-3 ">
-      <div className="container mx-auto px-2 py-2">
+      <div className="container mx-auto p-2">
         <div className="flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <a className="flex font-bold font-logo text-[36px] " href="/">

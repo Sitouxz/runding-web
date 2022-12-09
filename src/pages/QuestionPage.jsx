@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-one-expression-per-line */
@@ -18,6 +19,11 @@ export default function QuestionPage() {
   const [accessibility, setAccessibility] = useState(false);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [createQuestionForm, setCreateQuestionForm] = useState({
+    title: '',
+    description: '',
+    keyword: [],
+  });
 
   const param = useParams();
 
@@ -43,7 +49,7 @@ export default function QuestionPage() {
         },
       })
       .then((response) => {
-        setData(response.data);
+        setData(response.data.data);
         // eslint-disable-next-line no-console
         console.log(data);
         setLoading(false);
@@ -54,6 +60,47 @@ export default function QuestionPage() {
       });
   }, []);
 
+  const handleCreateQuestion = (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem('token');
+    api
+      .post(
+        `/runding/posts/create/${param.id}`,
+        {
+          title_form: createQuestionForm.title,
+          description_form: createQuestionForm.description,
+          tags_form: createQuestionForm.keyword,
+        },
+        {
+          headers: {
+            'auth-token': token, // the token is a variable which holds the token
+          },
+        }
+      )
+      .then((response) => {
+        // eslint-disable-next-line no-console
+        console.log(response);
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.log(error);
+      });
+  };
+
+  const handleCreateQuestionForm = (e) => {
+    if (e.target.name === 'keyword') {
+      const keyword = e.target.value.split(',');
+      setCreateQuestionForm({
+        ...createQuestionForm,
+        [e.target.name]: keyword,
+      });
+      return;
+    }
+    setCreateQuestionForm({
+      ...createQuestionForm,
+      [e.target.name]: e.target.value,
+    });
+  };
   return (
     <>
       <AccessibilityPopup
@@ -85,7 +132,7 @@ export default function QuestionPage() {
             nested
           >
             {(close) => (
-              <div className="bg-white rounded-lg shadow-lg p-4 m-4 max-h-screen pb-24 overflow-scroll">
+              <form className="bg-white rounded-lg shadow-lg p-4 m-4 max-h-screen pb-24 overflow-scroll lg:overflow-auto">
                 <h2 className="font-semibold text-xl mb-4">
                   Ajukan pertanyaan
                 </h2>
@@ -121,7 +168,9 @@ export default function QuestionPage() {
                   <input
                     type="text"
                     id="title"
+                    name="title"
                     className="border border-primary-1 rounded-lg flex-grow py-1 px-2 w-full"
+                    onChange={(e) => handleCreateQuestionForm(e)}
                   />
                 </div>
                 <div className="mt-3">
@@ -129,12 +178,14 @@ export default function QuestionPage() {
                     htmlFor="description"
                     className="font-semibold text-primary-1 text-lg"
                   >
-                    Tuliskan peretanyaanmu
+                    Tuliskan pertanyaanmu
                   </label>
 
                   <textarea
                     id="description"
+                    name="description"
                     className="border border-primary-1 rounded-lg flex-grow py-1 px-2 w-full h-40"
+                    onChange={(e) => handleCreateQuestionForm(e)}
                   />
                 </div>
                 <div className="mt-3">
@@ -148,7 +199,9 @@ export default function QuestionPage() {
                   <input
                     type="text"
                     id="tags"
+                    name="keyword"
                     className="border border-primary-1 rounded-lg flex-grow py-1 px-2 w-full"
+                    onChange={(e) => handleCreateQuestionForm(e)}
                   />
                 </div>
                 <div className="mt-3 text-end">
@@ -164,11 +217,12 @@ export default function QuestionPage() {
                   <button
                     type="button"
                     className="py-2 px-6 sm:px-10 bg-primary-1 shadow-lg shadow-primary-1 rounded-md mt-2 lg:mt-0 lg:ml-2 text-white"
+                    onClick={handleCreateQuestion}
                   >
                     Buat Diskusi
                   </button>
                 </div>
-              </div>
+              </form>
             )}
           </Popup>
         </div>
@@ -176,12 +230,12 @@ export default function QuestionPage() {
         <div>
           <h2 className="font-semibold mb-4">Semua Pertanyaan</h2>
           {loading ?? (
-            <div className="flex justify-center items-center pt-20">
+            <div className="flex justify-center items-center ml-auto pt-20">
               <i className="fa-solid fa-circle-notch animate-spin text-3xl text-primary-1" />
             </div>
           )}
           {data.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="flex flex-col gap-4">
               {data.map((item) => (
                 <QuestionCard
                   key={item._id}
@@ -191,11 +245,13 @@ export default function QuestionPage() {
               ))}
             </div>
           ) : (
-            <div className="flex justify-center items-center pt-20">
-              <p className="text-center text-primary-1">
-                Belum ada pertanyaan yang diajukan
-              </p>
-            </div>
+            data.length === 0 ?? (
+              <div className="flex justify-center items-center pt-20">
+                <p className="text-center text-primary-1">
+                  Belum ada pertanyaan yang diajukan
+                </p>
+              </div>
+            )
           )}
         </div>
       </div>

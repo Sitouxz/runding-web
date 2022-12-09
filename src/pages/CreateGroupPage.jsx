@@ -65,32 +65,17 @@ export default function CreateGroup() {
           const filerandom = new File([blob], `random-${nowDate}.png`, {
             type: 'image/png',
           });
-          formData.append(
-            'logo_form',
-            filerandom,
-          );
+          formData.append('logo_form', filerandom);
         });
     } else {
-      formData.append(
-        'logo_form',
-        file,
-      );
+      formData.append('logo_form', file);
     }
 
-    formData.append(
-      'subject_form',
-      subjectform,
-    );
+    formData.append('subject_form', subjectform);
 
-    formData.append(
-      'deskripsi_form',
-      deskripsiform,
-    );
+    formData.append('deskripsi_form', deskripsiform);
 
-    formData.append(
-      'jenis_form',
-      jenisform,
-    );
+    formData.append('jenis_form', jenisform);
 
     await api
       .post('/runding/create', formData, {
@@ -111,19 +96,19 @@ export default function CreateGroup() {
 
   return (
     <>
-      <AccessibilityPopup accessibility={accessibility} setAccess={setAccessibility} />
+      <AccessibilityPopup
+        accessibility={accessibility}
+        setAccess={setAccessibility}
+      />
       <Navbar />
       {renderAccesibility()}
       <div className="container mx-auto px-2 mt-4 mb-10">
         <Link to="/ruang" className="py-3">
           {'< Kembali'}
         </Link>
-        <form
-          action="#"
-          onSubmit={CreateHandler}
-        >
+        <form action="#" onSubmit={CreateHandler}>
           <div className="flex flex-col justify-center items-center gap-3 w-full mt-3">
-            <img src={filesrc} alt="" />
+            <img src={filesrc} alt="" className="h-40 " />
             <span>Select Image</span>
             <div className="flex flex-col lg:flex-row">
               <input
@@ -132,12 +117,16 @@ export default function CreateGroup() {
                 id="files"
                 ref={ref}
                 onChange={handleChangeImage}
-                className="bg-primary-1 text-white py-2 px-10 rounded-l-lg shadow-lg shadow-primary-1"
+                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-primary-1 hover:file:bg-blue-100"
               />
               <button
-                onClick={() => { reset(); setFile(null); setFileSrc(avatarBig); }}
+                onClick={() => {
+                  reset();
+                  setFile(null);
+                  setFileSrc(avatarBig);
+                }}
                 type="button"
-                className="bg-primary-1 text-neutral-200 py-2 px-10 rounded-r-lg shadow-lg shadow-primary-1"
+                className="bg-primary-1 text-neutral-200 py-2 px-10 rounded-lg shadow-lg shadow-primary-1 mt-3 sm:mt-0 sm:ml-3"
               >
                 X
               </button>
@@ -147,8 +136,8 @@ export default function CreateGroup() {
             <label htmlFor="name" className="font-semibold text-lg">
               Subjek Grup
               <span className="font-normal text-sm text-red-500 ml-1">
-                *pastikan anda menuliskan subjek grup dengan benar, sebagai contoh
-                = Komunitas Grup Phyton
+                *pastikan anda menuliskan subjek grup dengan benar, sebagai
+                contoh = Komunitas Grup Phyton
               </span>
             </label>
             <input
@@ -163,7 +152,8 @@ export default function CreateGroup() {
             <label htmlFor="name" className="font-semibold text-lg">
               Deskripsi grup
               <span className="font-normal text-sm text-red-500 ml-1">
-                *tuliskan secara jelas kegunaan grup yang akan Anda buat atau materi awal grup
+                *tuliskan secara jelas kegunaan grup yang akan Anda buat atau
+                materi awal grup
               </span>
             </label>
             <textarea
@@ -179,9 +169,9 @@ export default function CreateGroup() {
             <label htmlFor="name" className="font-semibold text-lg">
               Jenis Grup
               <span className="font-normal text-sm text-red-500 ml-1">
-                *tuliskan jenis diskusi meliputi
-                : Sains, Teknologi, Programming,
-                Agrikultur, Bisnis, Kesehatan, Debat, Hiburan, Kuliner, Olahraga dan Other
+                *tuliskan jenis diskusi meliputi : Sains, Teknologi,
+                Programming, Agrikultur, Bisnis, Kesehatan, Debat, Hiburan,
+                Kuliner, Olahraga dan Other
               </span>
             </label>
             <input

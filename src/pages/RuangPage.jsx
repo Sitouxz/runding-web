@@ -79,22 +79,28 @@ export default function RuangPage() {
 
   return (
     <>
-      <AccessibilityPopup accessibility={accessibility} setAccess={setAccessibility} />
+      <AccessibilityPopup
+        accessibility={accessibility}
+        setAccess={setAccessibility}
+      />
       <Navbar />
       {renderAccesibility()}
       <div className="container mx-auto px-2 mt-4">
         <div className="flex flex-col lg:flex-row mb-4">
-          <form onSubmit={handleSubmit} className="flex-grow">
+          <form
+            onSubmit={handleSubmit}
+            className="flex-grow flex flex-col sm:flex-row"
+          >
             <input
               type="text"
               placeholder="Cari ruang diskusi"
-              className="border-2 border-primary-1 rounded-lg flex-grow py-1 px-2 w-10/12 ml-1"
+              className="border-2 border-primary-1 rounded-lg flex-grow py-1 px-2 ml-1 sm:ml-auto"
               value={searchTerm}
               onChange={handleChange}
             />
             <button
               type="submit"
-              className="py-1 px-6 sm:px-10 bg-primary-1 rounded-md mt-2 ml-2 text-white"
+              className="py-2 px-6 sm:px-10 bg-primary-1 rounded-md mt-2 sm:mt-auto ml-2 text-white hover:shadow-primary-1 shadow-lg"
             >
               Cari
             </button>
@@ -102,7 +108,7 @@ export default function RuangPage() {
         </div>
       </div>
       <div className="container mx-auto px-2 mt-4">
-        <div className="flex flex-col lg:flex-row mb-3">
+        <div className="flex justify-between mb-3">
           <h2 className="font-semibold mt-auto mb-auto">
             Daftar
             <span className="text-primary-1"> Ruang Diskusi</span>
@@ -112,22 +118,23 @@ export default function RuangPage() {
               navigate('/create');
             }}
             type="button"
-            className="flex justify-center items-center text-center text-white ml-[7px] w-[120px] h-[40px] bg-primary-2 text-[15px] font-medium p-0 rounded-[10px] relative hover:shadow-primary-1 shadow-2xl"
+            className="flex justify-center items-center text-center text-white ml-[7px] w-[120px] h-[40px] bg-primary-2 text-[15px] font-medium p-0 rounded-lg hover:shadow-primary-1 shadow-lg"
           >
             Buat Ruang
           </button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          { loading ? (
-          <div className="flex justify-center items-center ml-auto pt-20">
-            <i className="fa-solid fa-circle-notch animate-spin text-3xl text-primary-1" />
-          </div>
-          ) : (searchResults.map((discussionRoom) => (
-            <DiscussionRoomCard
-              key={discussionRoom._id}
-              discussionRoom={discussionRoom}
-            />
-          ))
+          {loading ? (
+            <div className="flex justify-center items-center ml-auto pt-20">
+              <i className="fa-solid fa-circle-notch animate-spin text-3xl text-primary-1" />
+            </div>
+          ) : (
+            searchResults.map((discussionRoom) => (
+              <DiscussionRoomCard
+                key={discussionRoom._id}
+                discussionRoom={discussionRoom}
+              />
+            ))
           )}
           {/* {discussionRooms.map((discussionRoom) => (
             <DiscussionRoomCard

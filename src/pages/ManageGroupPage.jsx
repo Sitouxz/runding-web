@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -27,7 +28,9 @@ export default function ManageGroupPage() {
         // eslint-disable-next-line no-console
         console.log(response.data);
         // eslint-disable-next-line no-alert
-        window.alert(`Kelas yang kamu join : \n${JSON.stringify(response.data.data)}`);
+        // window.alert(
+        //   `Kelas yang kamu join : \n${JSON.stringify(response.data.data)}`
+        // );
       })
       .catch((error) => {
         // eslint-disable-next-line no-console
@@ -47,23 +50,35 @@ export default function ManageGroupPage() {
 
   return (
     <>
-      <AccessibilityPopup accessibility={accessibility} setAccess={setAccessibility} />
+      <AccessibilityPopup
+        accessibility={accessibility}
+        setAccess={setAccessibility}
+      />
       <Navbar />
       {renderAccesibility()}
       <div className="container mx-auto px-2 mt-4 mb-10">
-        <Link to="/profile" className="py-3">
-          {'< Kembali'}
-        </Link>
-        <span className="text-primary-1 font-medium"> | Ruang diskusiku</span>
-        <button
-          onClick={() => {
-            navigate('/create');
-          }}
-          type="button"
-          className="flex justify-end items-center text-white w-[75px] h-[59px] mt-[40px] bg-primary-2 text-[15px] font-medium p-0 rounded-[17px] relative hover:shadow-primary-1 shadow-2xl"
-        >
-          <span className="text-center w-full">Buat Ruang Diskusi</span>
-        </button>
+        <div className="sm:flex justify-between items-center">
+          <div>
+            <Link to="/profile" className="py-3">
+              {'< Kembali'}
+            </Link>
+            <span className="text-primary-1 font-medium">
+              {' '}
+              | Ruang diskusiku
+            </span>
+          </div>
+          <button
+            onClick={() => {
+              navigate('/create');
+            }}
+            type="button"
+            className="w-full sm:w-auto bg-primary-1 text-neutral-200 py-2 px-10 rounded-lg shadow-lg shadow-primary-1"
+          >
+            <span className="text-center w-full font-medium">
+              Buat Ruang Diskusi
+            </span>
+          </button>
+        </div>
         <div>
           <MyGroupCard />
           <MyGroupCard />

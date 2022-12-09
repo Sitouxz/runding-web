@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import AccessibilityPopup from '../components/AccessibilityPopup';
 import Navbar from '../layouts/Navbar';
 import Background from '../components/Background';
@@ -11,6 +11,8 @@ import QuestionResponseCard from '../components/QuestionResponseCard';
 
 export default function QuestionDetailPage() {
   const [accessibility, setAccessibility] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.body.style.setProperty('--color-primary', '#5D5FEF');
@@ -27,13 +29,16 @@ export default function QuestionDetailPage() {
 
   return (
     <>
-      <AccessibilityPopup accessibility={accessibility} setAccess={setAccessibility} />
+      <AccessibilityPopup
+        accessibility={accessibility}
+        setAccess={setAccessibility}
+      />
       <Navbar />
       {renderAccesibility()}
       <div className="container mx-auto px-2 mt-4 mb-10">
-        <a href="/quest" className="py-3">
+        <button type="button" onClick={() => navigate(-1)} className="py-3">
           {'< Kembali'}
-        </a>
+        </button>
         <div className="mt-3 flex flex-col lg:flex-row justify-between items-center lg:items-start gap-3 w-full ">
           <div className="w-24 flex justify-center items-center">
             <img src={avatar} alt="" />

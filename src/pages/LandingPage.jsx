@@ -34,8 +34,8 @@ export default function LandingPage() {
         accesibility={accessibility}
         setAccess={setAccessibility}
       />
-      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-white lg:bg-transparent shadow-lg lg:shadow-none border-b-2 lg:border-none mb-3 ">
-        <div className="container mx-auto">
+      <nav className="relative flex flex-wrap items-center justify-between bg-white lg:bg-transparent shadow-lg lg:shadow-none border-b-2 lg:border-none mb-3 ">
+        <div className="container mx-auto p-2">
           <div className="flex flex-wrap items-center justify-between">
             <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
               <Link className="flex font-bold font-logo text-[36px] " to="/">
