@@ -28,12 +28,31 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/detail" element={<DiscussionDetails />} />
-        <Route path="/quest" element={<QuestionPage />} />
         <Route path="/quest/id" element={<QuestionDetailPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/create" element={<CreateGroupPage />} />
-        <Route path="/about" element={<AboutPage />} />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <ProfilePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/create"
+          element={
+            <PrivateRoute>
+              <CreateGroupPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <PrivateRoute>
+              <AboutPage />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/manage"
           element={
