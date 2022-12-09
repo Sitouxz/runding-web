@@ -141,7 +141,7 @@ export default function DiscussionDetails() {
                   </span>
                 </div>
               </div>
-              {data.member ? (
+              {data.member || data.author ? (
                 <div className="flex justify-center lg:block w-full lg:w-auto">
                   <span>
                     <i className="fa-solid fa-calendar mr-2" />
