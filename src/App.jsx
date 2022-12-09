@@ -48,9 +48,7 @@ function App() {
         <Route
           path="/about"
           element={
-            <PrivateRoute>
-              <AboutPage />
-            </PrivateRoute>
+            <AboutPage />
           }
         />
         <Route
