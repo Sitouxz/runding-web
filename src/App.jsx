@@ -14,6 +14,11 @@ import QuestionDetailPage from './pages/QuestionDetailPage';
 import ProfilePage from './pages/ProfilePage';
 import CreateGroupPage from './pages/CreateGroupPage';
 import ManageGroupPage from './pages/ManageGroupPage';
+import JoinedGroupPage from './pages/JoinedGroupPage';
+import NotificationPage from './pages/NotificationPage';
+import AdministratorGroupPage from './pages/AdministratorGroupPage';
+import AdministratorInfoPage from './pages/AdministratorInfoPage';
+import Web404Page from './pages/Web404Page';
 // import GroupDetailPage from './pages/GroupDetailPage';
 
 function App() {
@@ -23,13 +28,48 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/detail" element={<DiscussionDetails />} />
-        <Route path="/quest" element={<QuestionPage />} />
         <Route path="/quest/id" element={<QuestionDetailPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/create" element={<CreateGroupPage />} />
-        <Route path="/manage" element={<ManageGroupPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <ProfilePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/create"
+          element={
+            <PrivateRoute>
+              <CreateGroupPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/manage"
+          element={
+            <PrivateRoute>
+              <ManageGroupPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/joined"
+          element={
+            <PrivateRoute>
+              <JoinedGroupPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/notifications"
+          element={
+            <PrivateRoute>
+              <NotificationPage />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/ruang"
           element={
@@ -55,13 +95,55 @@ function App() {
           }
         />
         <Route
-          path="/question/detail/:questionid"
+          path="/ruang/administrator/:id"
+          element={
+            <PrivateRoute>
+              <AdministratorGroupPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/ruang/admininfo/:id"
+          element={
+            <PrivateRoute>
+              <AdministratorInfoPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/question/detail/:id"
           element={
             <PrivateRoute>
               <QuestionDetailPage />
             </PrivateRoute>
           }
         />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <ProfilePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/create"
+          element={
+            <PrivateRoute>
+              <CreateGroupPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/manage"
+          element={
+            <PrivateRoute>
+              <ManageGroupPage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route path="*" exact element={<Web404Page />} />
       </Routes>
     </BrowserRouter>
   );

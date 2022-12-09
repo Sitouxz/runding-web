@@ -15,7 +15,7 @@ export default function DiscussionRoomCard({ discussionRoom }) {
   return (
     <div id={`${_id}`} className="bg-white shadow-lg flex flex-col lg:flex-row justify-between items-center gap-3 w-full border-2 rounded-lg p-3">
       <div className="w-24 flex justify-center items-center">
-        <img src={logo_grup} alt="" />
+        <img src={logo_grup} alt="group logo" />
       </div>
       <div className="flex-grow flex flex-col justify-center items-center lg:block">
         <h3 className="font-semibold mb-2">{subject}</h3>

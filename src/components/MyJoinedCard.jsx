@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import avatar from '../assets/img/avatar.png';
 
-export default function MyGroupCard({ discussionRoom }) {
+export default function MyJoinedCard({ discussionRoom }) {
   const navigate = useNavigate();
 
   const {
@@ -51,10 +51,10 @@ export default function MyGroupCard({ discussionRoom }) {
         <div className="mt-5 flex flex-col lg:block text-start">
           <button
             type="button"
-            onClick={() => navigate(`/ruang/administrator/${_id}`)}
+            onClick={() => navigate(`/ruang/${_id}`)}
             className="bg-primary-1 text-white font-semibold px-6 py-3 flex-grow rounded-lg shadow-lg shadow-primary-1 mb-3 lg:mr-3"
           >
-            Admin Settings
+            Open Group
           </button>
           <button
             type="button"
