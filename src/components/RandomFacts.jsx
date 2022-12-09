@@ -16,7 +16,7 @@ export default function RandomFacts() {
   }, []);
 
   return (
-    <div className="mt-3 bg-white shadow-lg border-2 rounded-lg p-3 w-96">
+    <div className="random-facts mt-3 bg-white shadow-lg border-2 rounded-lg p-3 w-96">
       <div className="flex flex-row lg:flex-col justify-between items-center lg:items-start gap-3 w-full ">
         <p className="font-regular mt-2 text-[18px] text-primary-2">
           Here&apos;s a Random Fact! :
