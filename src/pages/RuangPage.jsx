@@ -22,11 +22,12 @@ import BackgroundAccessible from '../components/BackgroundAccessible';
 
 import api from '../config/api';
 
-export default function HomePage() {
+export default function RuangPage() {
   const [discussionRooms, setDiscussionRooms] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [accessibility, setAccessibility] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const renderAccesibility = () => {
     if (accessibility) {
@@ -48,6 +49,7 @@ export default function HomePage() {
       .then((response) => {
         setDiscussionRooms(response.data.data);
         setSearchResults(response.data.data);
+        setLoading(false);
       })
       .catch((error) => {
         // eslint-disable-next-line no-console
@@ -116,12 +118,17 @@ export default function HomePage() {
           </button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          {searchResults.map((discussionRoom) => (
+          { loading ? (
+          <div className="flex justify-center items-center ml-auto pt-20">
+            <i className="fa-solid fa-circle-notch animate-spin text-3xl text-primary-1" />
+          </div>
+          ) : (searchResults.map((discussionRoom) => (
             <DiscussionRoomCard
               key={discussionRoom._id}
               discussionRoom={discussionRoom}
             />
-          ))}
+          ))
+          )}
           {/* {discussionRooms.map((discussionRoom) => (
             <DiscussionRoomCard
               key={discussionRoom._id}

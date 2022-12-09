@@ -155,7 +155,29 @@ export default function DiscussionDetails() {
             <div className="mt-5">
               <p>{data.data.deskripsi || ''}</p>
             </div>
+            <div className="mt-5">
+              {
+                (() => {
+                  if (data.member || data.author) {
+                    return (
+                      <p>{`Meeting : ${data.data.meetTime || 'Belum ada meeting dibuat'}`}</p>
+                    );
+                  }
+
+                  return (
+                    <div />
+                  );
+                })()
+              }
+            </div>
             <div className="mt-5 text-end">
+              <button
+                type="button"
+                onClick={() => navigate(`/ruang/admininfo/${params.id}`)}
+                className="bg-primary-1 mr-2 ml-2 mb-2 text-white font-semibold px-6 py-3 flex-grow rounded-lg shadow-lg shadow-primary-1"
+              >
+                Contact Admin
+              </button>
               {
                 (() => {
                   if (data.member || data.author) {
@@ -163,7 +185,7 @@ export default function DiscussionDetails() {
                       return (
                         <button
                           type="button"
-                          onClick={() => window.open(`https://${data.data.meetLink}`, '_blank', 'noopener,noreferrer')}
+                          onClick={() => window.open(`${data.data.meetLink}`, '_blank', 'noopener,noreferrer')}
                           className="bg-primary-1 text-white font-semibold px-6 py-3 flex-grow rounded-lg shadow-lg shadow-primary-1 mr-3"
                         >
                           Open Meeting

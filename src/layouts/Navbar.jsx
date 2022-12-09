@@ -62,14 +62,14 @@ export default function Navbar() {
                 to="/profile"
               >
                 <img src={avatar} alt="" className="w-10 h-10" />
-                <span className="lg:hidden">John Doe</span>
+                <span className="lg:hidden">Your Proifle</span>
               </Link>
-              <a
+              <Link
                 className="text-md font-medium leading-snug text-primary-3 hover:opacity-75"
-                href="#beranda"
+                to="/notifications"
               >
                 <i className="fa-regular fa-bell text-3xl lg:text-xl" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

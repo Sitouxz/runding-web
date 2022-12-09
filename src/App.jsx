@@ -14,7 +14,9 @@ import QuestionDetailPage from './pages/QuestionDetailPage';
 import ProfilePage from './pages/ProfilePage';
 import CreateGroupPage from './pages/CreateGroupPage';
 import ManageGroupPage from './pages/ManageGroupPage';
+import NotificationPage from './pages/NotificationPage';
 import AdministratorGroupPage from './pages/AdministratorGroupPage';
+import AdministratorInfoPage from './pages/AdministratorInfoPage';
 import Web404Page from './pages/Web404Page';
 // import GroupDetailPage from './pages/GroupDetailPage';
 
@@ -32,6 +34,14 @@ function App() {
         <Route path="/create" element={<CreateGroupPage />} />
         <Route path="/manage" element={<ManageGroupPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route
+          path="/notifications"
+          element={
+            <PrivateRoute>
+              <NotificationPage />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/ruang"
           element={
@@ -61,6 +71,14 @@ function App() {
           element={
             <PrivateRoute>
               <AdministratorGroupPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/ruang/admininfo/:id"
+          element={
+            <PrivateRoute>
+              <AdministratorInfoPage />
             </PrivateRoute>
           }
         />
