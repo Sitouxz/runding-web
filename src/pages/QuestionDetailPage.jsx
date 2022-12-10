@@ -171,7 +171,7 @@ export default function QuestionDetailPage() {
             </div>
             <div className="flex-grow flex flex-col justify-center items-center lg:items-start lg:block">
               <h3 className="font-semibold mb-2 text-xl">
-                {data.post[0].author}
+                {data.post[0].username_author}
               </h3>
               <div className="flex items-center mb-1">
                 <i className="fa-solid fa-clock mr-3 w-5 h-5 flex justify-center items-center text-xl text-primary-1" />
