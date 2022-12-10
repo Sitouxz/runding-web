@@ -4,6 +4,7 @@ import ellipse from '../assets/img/Ellipse.svg';
 import ellipse2 from '../assets/img/Ellipse-1.svg';
 import ellipse3 from '../assets/img/Ellipse-2.svg';
 
+// merender background halaman dari assets
 export default function Background(props) {
   const { noBig } = props;
   return (

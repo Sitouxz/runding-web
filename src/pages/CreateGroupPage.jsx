@@ -10,6 +10,8 @@ import BackgroundAccessible from '../components/BackgroundAccessible';
 
 import avatarBig from '../assets/img/avatarBig.png';
 
+/* dalam create ruang diskusi baru, jika user tidak mengupload image, maka akan mengambil
+   random image dari unsplash stock image website sebagai image group */
 export default function CreateGroup() {
   const [accessibility, setAccessibility] = useState(false);
   const [file, setFile] = useState(null);

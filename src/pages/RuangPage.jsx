@@ -137,14 +137,6 @@ export default function RuangPage() {
               />
             ))
           )}
-          {/* {discussionRooms.map((discussionRoom) => (
-            <DiscussionRoomCard
-              key={discussionRoom._id}
-              logo={discussionRoom.logo_grup}
-              subject={discussionRoom.subject}
-              user={discussionRoom.peserta}
-            />
-          ))} */}
         </div>
       </div>
     </>

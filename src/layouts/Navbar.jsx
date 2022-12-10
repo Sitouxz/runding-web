@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import logoImg from '../assets/img/logoImg.svg';
 import avatar from '../assets/img/avatar.png';
 
+/* Navbar di tiap halaman aplikasi yang berisi navigasi ke halaman beranda, ruang diskusi,
+   tentang kami, profile, dan notifikasi */
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
   return (

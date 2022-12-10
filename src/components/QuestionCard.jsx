@@ -2,8 +2,9 @@
 /* eslint-disable prefer-template */
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import avatar from '../assets/img/avatar.png';
 
+/* Card untuk tiap pertanyaan, akan menampilkan author question, judul dan pertanyaan,
+   kapan question dibuat, dan jumlah balasan tiap question */
 export default function QuestionCard({ item }) {
   const renderTag = () => {
     if (item.tags.length === 0) {

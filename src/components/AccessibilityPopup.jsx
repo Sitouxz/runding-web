@@ -4,6 +4,10 @@ import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Popup from 'reactjs-popup';
 
+/* komponen link tersembunyi (diakses melalui focus key) untuk membuka menu aksesibilitas, dimana
+   user dapat melakukan navigasi ke halaman beranda dan ruang diskusi, serta dapat melakukan
+   toggle colorblind mode. Colorblind mode merupakan mode yang merubah warna yang digunakan dalam
+   aplikasi dengan warna colorblind-friendly */
 export default function AccessibilityPopup({ accessibility, setAccess }) {
   const navigate = useNavigate();
   let accesibilityBool = accessibility;

@@ -21,6 +21,7 @@ export default function LandingPage() {
     document.body.style.setProperty('--color-tertiary', '#121225');
   }, []);
 
+  // merender background aksesibilitas
   const renderAccesibility = () => {
     if (accessibility) {
       return <BackgroundAccessible />;

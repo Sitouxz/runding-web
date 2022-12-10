@@ -2,6 +2,7 @@ import React from 'react';
 
 import avatar from '../assets/img/avatar.png';
 
+// card untuk tiap jawaban/balasan dalam page detail pertanyaan
 export default function QuestionResponseCard(props) {
   const { data } = props;
 
