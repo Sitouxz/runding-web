@@ -5,6 +5,8 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
+/* Setiap routes didalam private routes saat diakses akan melakukan pengecekan apakah
+   user sudah melakukan login atau belum, jika belum maka redirect ke login */
 export default function PrivateRoute(props) {
   const { children } = props;
   const isLoggedIn = localStorage.getItem('authenticated') === 'true';

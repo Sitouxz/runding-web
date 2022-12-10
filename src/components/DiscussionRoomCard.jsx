@@ -3,8 +3,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// import avatar from '../assets/img/avatar.png';
-
+/* card untuk menampilkan data grup ruang diskusi meliputi
+   nama ruang diskusi, jumlah anggota, dan tema ruang diskusi */
 export default function DiscussionRoomCard({ discussionRoom }) {
   const navigate = useNavigate();
 

@@ -10,6 +10,8 @@ import BackgroundAccessible from '../components/BackgroundAccessible';
 
 import avatarBig from '../assets/img/avatarBig.png';
 
+/* dalam create ruang diskusi baru, jika user tidak mengupload image, maka akan mengambil
+   random image dari unsplash stock image website sebagai image group */
 export default function CreateGroup() {
   const [accessibility, setAccessibility] = useState(false);
   const [file, setFile] = useState(null);
@@ -109,7 +111,7 @@ export default function CreateGroup() {
         <form action="#" onSubmit={CreateHandler}>
           <div className="flex flex-col justify-center items-center gap-3 w-full mt-3">
             <img src={filesrc} alt="" className="h-40 " />
-            <span>Select Image</span>
+            <span>Select Image (Optional)</span>
             <div className="flex flex-col lg:flex-row">
               <input
                 type="file"

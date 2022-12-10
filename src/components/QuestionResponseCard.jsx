@@ -2,6 +2,7 @@ import React from 'react';
 
 import avatar from '../assets/img/avatar.png';
 
+// card untuk tiap jawaban/balasan dalam page detail pertanyaan
 export default function QuestionResponseCard(props) {
   const { data } = props;
 
@@ -36,7 +37,7 @@ export default function QuestionResponseCard(props) {
           <img src={avatar} alt="" className="w-14 h-14" />
         </div>
         <div className="flex-grow flex flex-col justify-center items-center lg:items-start lg:block">
-          <h3 className="font-semibold text-xl">{data.author_id}</h3>
+          <h3 className="font-semibold text-xl">{data.author_username}</h3>
           <div className="flex items-center">
             <i className="fa-solid fa-clock mr-3 w-5 h-5 flex justify-center items-center text-xl text-primary-1" />
             <span className=" font-medium text-gray-500">{renderTime()}</span>

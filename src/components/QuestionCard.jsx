@@ -2,11 +2,10 @@
 /* eslint-disable prefer-template */
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import avatar from '../assets/img/avatar.png';
 
-export default function QuestionCard(props) {
-  const { item } = props;
-
+/* Card untuk tiap pertanyaan, akan menampilkan author question, judul dan pertanyaan,
+   kapan question dibuat, dan jumlah balasan tiap question */
+export default function QuestionCard({ item }) {
   const renderTag = () => {
     if (item.tags.length === 0) {
       return (
@@ -65,7 +64,7 @@ export default function QuestionCard(props) {
     }
     return (
       <span className="text-primary-1 font-medium text-sm">
-        {item.replies.length}
+        {`${item.replies.length} `}
         Pembahasan
       </span>
     );
@@ -90,6 +89,9 @@ export default function QuestionCard(props) {
               Baca selengkapnya
             </span>
           )}
+        </p>
+        <p className="mt-2 text-primary-2 text-sm">
+          {` ${item.username_author}`}
         </p>
       </div>
       <div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+// component yang menggunakan api random facts untuk menampilkan sebuah fakta random
 export default function RandomFacts() {
   // eslint-disable-next-line no-unused-vars
   const [fact, setFact] = useState('');

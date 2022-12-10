@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 import avatar from '../assets/img/avatar.png';
 
+/* card untuk menampilkan setiap group yang user merupakan admin sehingga user dapat
+  mengakses admin settings dan halaman pertanyaan */
 export default function MyGroupCard({ discussionRoom }) {
   const navigate = useNavigate();
 

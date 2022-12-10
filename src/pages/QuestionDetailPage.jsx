@@ -15,6 +15,7 @@ export default function QuestionDetailPage() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [commentForm, setCommentForm] = useState('');
+  const [dataUser, setDataUser] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const navigate = useNavigate();
@@ -32,6 +33,23 @@ export default function QuestionDetailPage() {
     }
     return <Background noBig />;
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    api
+      .get('/user/data', {
+        headers: {
+          'auth-token': token, // the token is a variable which holds the token
+        },
+      })
+      .then((response) => {
+        setDataUser(response.data);
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.log(error);
+      });
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -88,14 +106,14 @@ export default function QuestionDetailPage() {
     if (data.post[0].replies.length === 1) {
       return (
         <span className="text-primary-1 font-medium text-sm">
-          {data.post[0].replies.length}
+          {` ${data.post[0].replies.length}`}
           Pembahasan
         </span>
       );
     }
     return (
       <span className="text-primary-1 font-medium text-sm">
-        {data.post[0].replies.length}
+        {` ${data.post[0].replies.length}`}
         Pembahasan
       </span>
     );
@@ -171,7 +189,7 @@ export default function QuestionDetailPage() {
             </div>
             <div className="flex-grow flex flex-col justify-center items-center lg:items-start lg:block">
               <h3 className="font-semibold mb-2 text-xl">
-                {data.post[0].author}
+                {data.post[0].username_author}
               </h3>
               <div className="flex items-center mb-1">
                 <i className="fa-solid fa-clock mr-3 w-5 h-5 flex justify-center items-center text-xl text-primary-1" />
@@ -202,7 +220,7 @@ export default function QuestionDetailPage() {
           <div className="mt-3">
             <div className="flex items-center gap-3">
               <img src={avatar} alt="" className="w-10 h-10" />
-              <span className="font-semibold">{data.post[0].author}</span>
+              <span className="font-semibold">{dataUser.data.username}</span>
             </div>
             <div className="border-b border-primary-1 pb-3">
               <textarea

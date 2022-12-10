@@ -73,6 +73,7 @@ export default function RuangPage() {
 
     setSearchTerm('');
   };
+
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -136,14 +137,6 @@ export default function RuangPage() {
               />
             ))
           )}
-          {/* {discussionRooms.map((discussionRoom) => (
-            <DiscussionRoomCard
-              key={discussionRoom._id}
-              logo={discussionRoom.logo_grup}
-              subject={discussionRoom.subject}
-              user={discussionRoom.peserta}
-            />
-          ))} */}
         </div>
       </div>
     </>
