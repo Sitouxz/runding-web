@@ -18,6 +18,8 @@ import api from '../config/api';
 export default function QuestionPage() {
   const [accessibility, setAccessibility] = useState(false);
   const [data, setData] = useState([]);
+  const [searchData, setSearchData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
   const [createQuestionForm, setCreateQuestionForm] = useState({
     title: '',
@@ -50,8 +52,9 @@ export default function QuestionPage() {
       })
       .then((response) => {
         setData(response.data.data);
+        setSearchData(response.data.data);
         // eslint-disable-next-line no-console
-        console.log(data);
+        console.log(response.data.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -80,6 +83,7 @@ export default function QuestionPage() {
       .then((response) => {
         // eslint-disable-next-line no-console
         console.log(response);
+        window.location.reload();
       })
       .catch((error) => {
         // eslint-disable-next-line no-console
@@ -101,6 +105,23 @@ export default function QuestionPage() {
       [e.target.name]: e.target.value,
     });
   };
+
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      setSearchData(data);
+      // eslint-disable-next-line array-callback-return, max-len
+      const newResults = data.filter((item) => item.title.toLowerCase().includes(searchTerm.toLowerCase()));
+      setSearchData(newResults);
+
+      setSearchTerm('');
+    }
+  };
+
   return (
     <>
       <AccessibilityPopup
@@ -116,16 +137,22 @@ export default function QuestionPage() {
         <div className="flex flex-col lg:flex-row">
           <input
             type="text"
-            placeholder="Cari ruang diskusi"
+            placeholder="Cari pertanyaan"
             className="border-2 border-primary-1 rounded-lg flex-grow py-1 px-2"
+            value={searchTerm}
+            onChange={handleChange}
+            onKeyDown={handleSubmit}
           />
+        </div>
+        <div>
+          <h2 className="font-semibold mb-3 mt-2">Semua Pertanyaan</h2>
           <Popup
             trigger={
               <button
                 type="button"
-                className="py-1 px-6 sm:px-10 bg-primary-1 rounded-md mt-2 lg:mt-0 lg:ml-2 text-white"
+                className="py-1 px-6 sm:px-10 bg-primary-1 rounded-md mt-1 lg:mt-0 lg:ml-1 text-white"
               >
-                Buat baru
+                Buat Pertanyaan Baru
               </button>
             }
             modal
@@ -195,7 +222,7 @@ export default function QuestionPage() {
                   >
                     Tambahkan kata kunci
                   </label>
-                  <span> *minimal 3 kata kunci</span>
+                  <span> *minimal 3 kata kunci (dipisah koma)</span>
                   <input
                     type="text"
                     id="tags"
@@ -225,10 +252,6 @@ export default function QuestionPage() {
               </form>
             )}
           </Popup>
-        </div>
-        <p className="mb-3">Parameter grup : {param.id}</p>
-        <div>
-          <h2 className="font-semibold mb-4">Semua Pertanyaan</h2>
           {loading ?? (
             <div className="flex justify-center items-center ml-auto pt-20">
               <i className="fa-solid fa-circle-notch animate-spin text-3xl text-primary-1" />
@@ -236,7 +259,7 @@ export default function QuestionPage() {
           )}
           {data.length > 0 ? (
             <div className="flex flex-col gap-4">
-              {data.map((item) => (
+              {searchData.map((item) => (
                 <QuestionCard
                   key={item._id}
                   item={item}

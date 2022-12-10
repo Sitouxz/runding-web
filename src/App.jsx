@@ -19,7 +19,6 @@ import NotificationPage from './pages/NotificationPage';
 import AdministratorGroupPage from './pages/AdministratorGroupPage';
 import AdministratorInfoPage from './pages/AdministratorInfoPage';
 import Web404Page from './pages/Web404Page';
-// import GroupDetailPage from './pages/GroupDetailPage';
 
 function App() {
   return (
@@ -28,7 +27,6 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/quest/id" element={<QuestionDetailPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route
           path="/profile"

@@ -109,7 +109,7 @@ export default function CreateGroup() {
         <form action="#" onSubmit={CreateHandler}>
           <div className="flex flex-col justify-center items-center gap-3 w-full mt-3">
             <img src={filesrc} alt="" className="h-40 " />
-            <span>Select Image</span>
+            <span>Select Image (Optional)</span>
             <div className="flex flex-col lg:flex-row">
               <input
                 type="file"

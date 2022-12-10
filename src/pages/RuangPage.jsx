@@ -73,6 +73,7 @@ export default function RuangPage() {
 
     setSearchTerm('');
   };
+
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
   };

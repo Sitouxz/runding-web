@@ -15,6 +15,7 @@ export default function QuestionDetailPage() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [commentForm, setCommentForm] = useState('');
+  const [dataUser, setDataUser] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const navigate = useNavigate();
@@ -32,6 +33,23 @@ export default function QuestionDetailPage() {
     }
     return <Background noBig />;
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    api
+      .get('/user/data', {
+        headers: {
+          'auth-token': token, // the token is a variable which holds the token
+        },
+      })
+      .then((response) => {
+        setDataUser(response.data);
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.log(error);
+      });
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -202,7 +220,7 @@ export default function QuestionDetailPage() {
           <div className="mt-3">
             <div className="flex items-center gap-3">
               <img src={avatar} alt="" className="w-10 h-10" />
-              <span className="font-semibold">{data.post[0].author}</span>
+              <span className="font-semibold">{dataUser.data.username}</span>
             </div>
             <div className="border-b border-primary-1 pb-3">
               <textarea
