@@ -106,14 +106,14 @@ export default function QuestionDetailPage() {
     if (data.post[0].replies.length === 1) {
       return (
         <span className="text-primary-1 font-medium text-sm">
-          {data.post[0].replies.length}
+          {` ${data.post[0].replies.length}`}
           Pembahasan
         </span>
       );
     }
     return (
       <span className="text-primary-1 font-medium text-sm">
-        {data.post[0].replies.length}
+        {` ${data.post[0].replies.length}`}
         Pembahasan
       </span>
     );
