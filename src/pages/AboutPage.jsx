@@ -88,21 +88,21 @@ export default function AboutPage() {
               <p>Front-end, Backend</p>
               <div className="flex gap-3">
                 <a
-                  href="https://www.linkedin.com/in/owen-hermawan-0b1b1b1b9/"
+                  href="https://www.linkedin.com/in/tristan-kusuma-abb21917a/"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <i className="fab fa-linkedin-in text-3xl text-primary-1" />
                 </a>
                 <a
-                  href="https://www.instagram.com/sitouxz/"
+                  href="https://www.instagram.com/tristanbeyk/"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <i className="fab fa-instagram text-3xl text-primary-1" />
                 </a>
                 <a
-                  href="https://github.com/Sitouxz"
+                  href="https://github.com/tristanbeykusuma"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -120,21 +120,21 @@ export default function AboutPage() {
               <p>Front-end</p>
               <div className="flex gap-3">
                 <a
-                  href="https://www.linkedin.com/in/owen-hermawan-0b1b1b1b9/"
+                  href="https://www.linkedin.com/"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <i className="fab fa-linkedin-in text-3xl text-primary-1" />
                 </a>
                 <a
-                  href="https://www.instagram.com/sitouxz/"
+                  href="https://www.instagram.com/"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <i className="fab fa-instagram text-3xl text-primary-1" />
                 </a>
                 <a
-                  href="https://github.com/Sitouxz"
+                  href="https://github.com/laraedyanputri"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -152,21 +152,21 @@ export default function AboutPage() {
               <p>Backend, UI/UX</p>
               <div className="flex gap-3">
                 <a
-                  href="https://www.linkedin.com/in/owen-hermawan-0b1b1b1b9/"
+                  href="https://www.linkedin.com/in/tri-adi-ningsih/"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <i className="fab fa-linkedin-in text-3xl text-primary-1" />
                 </a>
                 <a
-                  href="https://www.instagram.com/sitouxz/"
+                  href="https://www.instagram.com/"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <i className="fab fa-instagram text-3xl text-primary-1" />
                 </a>
                 <a
-                  href="https://github.com/Sitouxz"
+                  href="https://github.com/triadiningsih"
                   target="_blank"
                   rel="noreferrer"
                 >
