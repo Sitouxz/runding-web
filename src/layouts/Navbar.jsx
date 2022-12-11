@@ -64,7 +64,7 @@ export default function Navbar() {
                 to="/profile"
               >
                 <img src={avatar} alt="" className="w-10 h-10" />
-                <span className="lg:hidden">Your Proifle</span>
+                <span className="lg:hidden">Your Profile</span>
               </Link>
               <Link
                 className="text-md font-medium leading-snug text-primary-3 hover:opacity-75"
