@@ -95,14 +95,14 @@ export default function AboutPage() {
                   <i className="fab fa-linkedin-in text-3xl text-primary-1" />
                 </a>
                 <a
-                  href="https://www.instagram.com/sitouxz/"
+                  href="https://www.instagram.com/tristanbeyk/"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <i className="fab fa-instagram text-3xl text-primary-1" />
                 </a>
                 <a
-                  href="https://www.instagram.com/tristanbeyk/"
+                  href="https://github.com/tristanbeykusuma"
                   target="_blank"
                   rel="noreferrer"
                 >
