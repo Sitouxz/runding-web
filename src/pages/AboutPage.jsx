@@ -4,6 +4,9 @@ import AccessibilityPopup from '../components/AccessibilityPopup';
 import Navbar from '../layouts/Navbar';
 import Background from '../components/Background';
 import avatar from '../assets/img/avatar.png';
+import iconTristan from '../assets/img/icon_tristan_94x94.png';
+import iconTriadi from '../assets/img/icon_tria_94x94.png';
+import iconLara from '../assets/img/icon_lara_94x94.png';
 import BackgroundAccessible from '../components/BackgroundAccessible';
 
 export default function AboutPage() {
@@ -45,15 +48,15 @@ export default function AboutPage() {
               <span className="font-medium mt-3">Owen</span>
             </div>
             <div className="flex flex-col justify-center items-center border-2 rounded-lg py-4 px-10 shadow-lg filter backdrop-blur-xl">
-              <img src={avatar} alt="avatar" />
+              <img src={iconTristan} alt="avatar" />
               <span className="font-medium mt-3">Tristan</span>
             </div>
             <div className="flex flex-col justify-center items-center border-2 rounded-lg py-4 px-10 shadow-lg filter backdrop-blur-xl">
-              <img src={avatar} alt="avatar" />
+              <img src={iconLara} alt="avatar" />
               <span className="font-medium mt-3">Lara</span>
             </div>
             <div className="flex flex-col justify-center items-center border-2 rounded-lg py-4 px-10 shadow-lg filter backdrop-blur-xl">
-              <img src={avatar} alt="avatar" />
+              <img src={iconTriadi} alt="avatar" />
               <span className="font-medium mt-3">Tria</span>
             </div>
           </div>
