@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react';
 import AccessibilityPopup from '../components/AccessibilityPopup';
 import Navbar from '../layouts/Navbar';
 import Background from '../components/Background';
-import avatar from '../assets/img/avatar.png';
-import iconTristan from '../assets/img/icon_tristan_94x94.png';
-import iconTriadi from '../assets/img/icon_tria_94x94.png';
-import iconLara from '../assets/img/icon_lara_94x94.png';
+import profile from '../assets/img/profile.jpg';
+import profile1 from '../assets/img/profile1.jpg';
+import profile2 from '../assets/img/profile2.jpg';
+import profile3 from '../assets/img/profile3.jpg';
 import BackgroundAccessible from '../components/BackgroundAccessible';
 
 export default function AboutPage() {
@@ -27,7 +27,10 @@ export default function AboutPage() {
 
   return (
     <>
-      <AccessibilityPopup accessibility={accessibility} setAccess={setAccessibility} />
+      <AccessibilityPopup
+        accessibility={accessibility}
+        setAccess={setAccessibility}
+      />
       <Navbar />
       {renderAccesibility()}
       <div className="container mx-auto px-2">
@@ -44,20 +47,132 @@ export default function AboutPage() {
           <h1 className="text-3xl font-semibold mb-3">Tim kami</h1>
           <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-3 lg:gap-10">
             <div className="flex flex-col justify-center items-center border-2 rounded-lg py-4 px-10 shadow-lg filter backdrop-blur-xl">
-              <img src={avatar} alt="avatar" />
+              <img
+                src={profile}
+                alt="avatar"
+                className="w-40 h-40 object-cover rounded-full"
+              />
               <span className="font-medium mt-3">Owen</span>
+              <p>Front-end, UI/UX</p>
+              <div className="flex gap-3">
+                <a
+                  href="https://www.linkedin.com/in/owen-hermawan-0b1b1b1b9/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="fab fa-linkedin-in text-3xl text-primary-1" />
+                </a>
+                <a
+                  href="https://www.instagram.com/sitouxz/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="fab fa-instagram text-3xl text-primary-1" />
+                </a>
+                <a
+                  href="https://github.com/Sitouxz"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="fab fa-github text-3xl text-primary-1" />
+                </a>
+              </div>
             </div>
             <div className="flex flex-col justify-center items-center border-2 rounded-lg py-4 px-10 shadow-lg filter backdrop-blur-xl">
-              <img src={iconTristan} alt="avatar" />
+              <img
+                src={profile3}
+                alt="avatar"
+                className="w-40 h-40 object-cover object-top rounded-full"
+              />
               <span className="font-medium mt-3">Tristan</span>
+              <p>Front-end, Backend</p>
+              <div className="flex gap-3">
+                <a
+                  href="https://www.linkedin.com/in/owen-hermawan-0b1b1b1b9/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="fab fa-linkedin-in text-3xl text-primary-1" />
+                </a>
+                <a
+                  href="https://www.instagram.com/sitouxz/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="fab fa-instagram text-3xl text-primary-1" />
+                </a>
+                <a
+                  href="https://github.com/Sitouxz"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="fab fa-github text-3xl text-primary-1" />
+                </a>
+              </div>
             </div>
             <div className="flex flex-col justify-center items-center border-2 rounded-lg py-4 px-10 shadow-lg filter backdrop-blur-xl">
-              <img src={iconLara} alt="avatar" />
+              <img
+                src={profile2}
+                alt="avatar"
+                className="w-40 h-40 object-cover rounded-full"
+              />
               <span className="font-medium mt-3">Lara</span>
+              <p>Front-end</p>
+              <div className="flex gap-3">
+                <a
+                  href="https://www.linkedin.com/in/owen-hermawan-0b1b1b1b9/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="fab fa-linkedin-in text-3xl text-primary-1" />
+                </a>
+                <a
+                  href="https://www.instagram.com/sitouxz/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="fab fa-instagram text-3xl text-primary-1" />
+                </a>
+                <a
+                  href="https://github.com/Sitouxz"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="fab fa-github text-3xl text-primary-1" />
+                </a>
+              </div>
             </div>
             <div className="flex flex-col justify-center items-center border-2 rounded-lg py-4 px-10 shadow-lg filter backdrop-blur-xl">
-              <img src={iconTriadi} alt="avatar" />
+              <img
+                src={profile1}
+                alt="avatar"
+                className="w-40 h-40 object-cover object-top rounded-full"
+              />
               <span className="font-medium mt-3">Tria</span>
+              <p>Backend, UI/UX</p>
+              <div className="flex gap-3">
+                <a
+                  href="https://www.linkedin.com/in/owen-hermawan-0b1b1b1b9/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="fab fa-linkedin-in text-3xl text-primary-1" />
+                </a>
+                <a
+                  href="https://www.instagram.com/sitouxz/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="fab fa-instagram text-3xl text-primary-1" />
+                </a>
+                <a
+                  href="https://github.com/Sitouxz"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="fab fa-github text-3xl text-primary-1" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
